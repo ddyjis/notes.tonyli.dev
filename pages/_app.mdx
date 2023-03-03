@@ -1,3 +1,11 @@
+import "../lib/styles.css";
+
+import { AppWrapper } from "components/AppWrapper";
+
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <AppWrapper>
+      <Component {...pageProps} />
+    </AppWrapper>
+  );
 }
