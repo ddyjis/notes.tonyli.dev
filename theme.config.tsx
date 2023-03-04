@@ -39,6 +39,22 @@ const config: DocsThemeConfig = {
   project: {
     link: "https://github.com/ddyjis/notes.tonyli.dev",
   },
+  sidebar: {
+    titleComponent: ({ title, type }) => {
+      const color = "rgba(107,114,128,var(--tw-text-opacity))";
+
+      if (type === "separator") {
+        return (
+          <div style={{ display: "flex", alignItems: "center", color }}>
+            <div style={{ flex: 1, height: "1px", backgroundColor: "#000" }} />
+            <span style={{ padding: "0 1rem" }}>{title}</span>
+            <div style={{ flex: 1, height: "1px", backgroundColor: "#000" }} />
+          </div>
+        );
+      }
+      return <>{title}</>;
+    },
+  },
 };
 
 export default config;
