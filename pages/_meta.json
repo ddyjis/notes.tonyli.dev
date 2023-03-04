@@ -1,15 +1,29 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
+  "index": "🏠 Home",
+  "life": {
+    "type": "separator",
+    "title": "Life"
   },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
-  }
+  "canada": "🇨🇦 Canada",
+  "culture": "🎭 Culture",
+  "driving": "🚘 Driving",
+  "hardware": "🖥️ Hardware",
+  "investment": "🏦 Investment",
+  "learning": "📚 Learning",
+  "lifestyles": "😎 Lifestyles",
+  "parenting": "👨‍👩‍👧‍👦 Parenting",
+  "pensieve": "🧠 Pensieve",
+  "philosophy": "💭 Philosophy",
+  "plain-text-accounting": "💰 Plain Text Accounting",
+  "psychology": "🤯 Psychology",
+  "reading": "📖 Reading",
+  "computer-science": {
+    "type": "separator",
+    "title": "Computer Science"
+  },
+  "database": "Database",
+  "leetcode": "🧑‍💻 Leet Code",
+  "programming-languages": "📜 Programming Languages",
+  "software-development": "🧑‍💻 Software Development",
+  "web-development": "🌐 Web Development"
 }
