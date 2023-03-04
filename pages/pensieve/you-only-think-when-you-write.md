@@ -1,5 +1,5 @@
 ---
-title: You only think when you write
+title: You think when you write
 aliases:
   - You only think when you write
 ---

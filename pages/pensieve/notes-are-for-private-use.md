@@ -1,5 +1,5 @@
 ---
-title: Notes are meant for private use
+title: Notes are private
 aliases:
   - Notes are meant for private use
 ---

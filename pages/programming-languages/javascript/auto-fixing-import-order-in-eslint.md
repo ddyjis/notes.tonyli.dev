@@ -1,5 +1,5 @@
 ---
-title: Auto-fixing Import Order in ESLint
+title: Import order with ESLint
 aliases:
   - Auto-fixing Import Order in ESLint
 ---

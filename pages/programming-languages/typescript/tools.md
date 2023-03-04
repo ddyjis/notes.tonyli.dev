@@ -1,5 +1,5 @@
 ---
-title: TypeScript Tools
+title: Tools
 aliases:
   - Typescript Tools
 ---

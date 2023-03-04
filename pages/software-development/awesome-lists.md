@@ -1,10 +1,10 @@
 ---
-title: Awesome lists
+title: Awesome Lists
 aliases:
-  - Awesome lists for Software Development
+  - Awesome Lists for Software Development
 ---
 
-# Awesome lists for software development
+# Awesome Lists for Software Development
 
 ## Algorithm
 

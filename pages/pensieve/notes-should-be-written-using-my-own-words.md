@@ -1,5 +1,5 @@
 ---
-title: Notes should be written using my own words
+title: Write in my own words
 aliases:
   - Notes should be written using my own words
 ---

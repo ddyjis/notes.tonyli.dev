@@ -1,5 +1,5 @@
 ---
-title: Self-performance Review as a Software Engineer
+title: Self-performance Review
 aliases: 
   - Self-performance Review as a Software Engineer
 ---

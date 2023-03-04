@@ -1,5 +1,5 @@
 ---
-title: Reimporting a Python Module in Interactive Shell
+title: Reimporting modules in shell
 aliases:
   - Reimporting a Python Module in Interactive Shell
 ---

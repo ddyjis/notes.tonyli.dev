@@ -1,5 +1,5 @@
 ---
-title: Techniques to Improve Reading Speed
+title: Improve reading speed
 aliases:
   - Techniques to Improve Reading Speed
 ---

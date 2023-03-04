@@ -1,5 +1,5 @@
 ---
-title: Canadian Depositary Receipts
+title: CDR
 aliases: 
   - Canadian Depositary Receipts
   - CDR

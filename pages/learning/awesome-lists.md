@@ -1,5 +1,5 @@
 ---
-title: Awesome Lists for Learning
+title: Awesome Lists
 aliases:
   - Awesome Lists for Learning
 ---

@@ -1,10 +1,14 @@
 ---
-title: Commas and Full Stops Live Inside Quotation Marks in American English
+title: American English
 aliases: 
-  - Commas and Full Stops Live Inside Quotation Marks in American English
+  - American English
 ---
 
-# Commas and Full Stops Live Inside Quotation Marks in American English
+# American English
+
+## Rules
+
+**Commas and Full Stops Live Inside Quotation Marks in American English**
 
 American English puts commas and full stops inside quotation marks, even when the quoted material is part of a larger sentence. (It doesn't make sense to me but okay...)
 

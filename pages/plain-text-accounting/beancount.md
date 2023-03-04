@@ -1,5 +1,5 @@
 ---
-title: Querying Multiple Accounts in Beancount fava
+title: Querying Multiple Accounts
 aliases: 
   - Querying Multiple Accounts in Beancount fava
 ---

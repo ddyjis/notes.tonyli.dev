@@ -1,5 +1,5 @@
 ---
-title: An Essay never comes out from nowhere
+title: Essay never comes from void
 aliases:
   - An Essay never comes out from nowhere
 ---

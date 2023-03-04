@@ -1,5 +1,5 @@
 ---
-title: Notes are written in markdown
+title: Write in Markdown
 aliases:
   - Notes are written in markdown
 ---

@@ -1,5 +1,5 @@
 ---
-title: Awesome lists
+title: Awesome Lists
 aliases:
   - Awesome lists for parenting
   - Books for Children

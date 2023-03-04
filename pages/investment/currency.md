@@ -1,5 +1,5 @@
 ---
-title: Currency
+title: FX
 aliases:
   - Currency
   - Norberts Gambit

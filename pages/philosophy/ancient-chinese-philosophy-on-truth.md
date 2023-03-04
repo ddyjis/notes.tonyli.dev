@@ -1,5 +1,5 @@
 ---
-title: Ancient Chinese Philosophy on Truth
+title: Ancient Chinese on Truth
 aliases: 
   - Ancient Chinese Philosophy on Truth
 ---

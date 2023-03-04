@@ -1,5 +1,5 @@
 ---
-title: A Modern Way of Zettelkasten
+title: Modern Zettelkasten
 aliases: 
   - A Modern Way of Zettelkasten
 ---
