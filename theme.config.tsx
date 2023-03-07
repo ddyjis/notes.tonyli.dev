@@ -1,11 +1,20 @@
 import Logo from "public/pensieve.png";
 
 import Image from "next/image";
+import type { HTMLProps } from "react";
 import React from "react";
 import type { DocsThemeConfig } from "nextra-theme-docs";
 import { useConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
+  components: {
+    p: ({ style, ...props }: HTMLProps<HTMLParagraphElement>) => (
+      <p
+        style={{ ...style, marginTop: "0.25rem", marginBottom: "0.25rem" }}
+        {...props}
+      />
+    ),
+  },
   docsRepositoryBase: "https://github.com/ddyjis/notes.tonyli.dev",
   editLink: {
     text: "Edit",
@@ -54,6 +63,7 @@ const config: DocsThemeConfig = {
       }
       return <>{title}</>;
     },
+    defaultMenuCollapseLevel: 1,
   },
 };
 
