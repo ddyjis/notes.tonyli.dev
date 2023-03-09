@@ -1,6 +1,9 @@
-.next
+# Node.js
 node_modules
-.docusaurus
 
 # MacOS
 .DS_Store
+
+# Docusaurus
+.docusaurus
+build

@@ -6,8 +6,8 @@ aliases:
 
 # How to Take Smart Notes
 
-- [An essay never comes out from nowhere](./how-to-take-smart-notes/an-essay-never-comes-out-from-nowhere)
-- [A Modern Way of Zettelkasten](./how-to-take-smart-notes/../a-modern-way-of-zettelkasten)
+- [An essay never comes out from nowhere](./an-essay-never-comes-out-from-nowhere)
+- [A Modern Way of Zettelkasten](./a-modern-way-of-zettelkasten)
 - Common mistakes on note taking
 	- Don't Take Notes for Everything - Because good ideas will get diluted
 	- Don't Take Note Just for a Single Topic. Take note with consideration of future retrieval, think about how it can be useful, in any place I can think of. Otherwise, I may have to repeat the process on the same material again.
