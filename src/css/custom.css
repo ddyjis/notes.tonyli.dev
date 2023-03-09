@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'iA Writer Mono';
+  src: url('/static/fonts/iAWriterMonoS-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'iA Writer Mono';
+  src: url('/static/fonts/iAWriterMonoS-BoldItalic.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'iA Writer Mono';
+  src: url('/static/fonts/iAWriterMonoS-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'iA Writer Mono';
+  src: url('/static/fonts/iAWriterMonoS-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/static/fonts/iAWriterQuattroS-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/static/fonts/iAWriterQuattroS-BoldItalic.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/static/fonts/iAWriterQuattroS-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/static/fonts/iAWriterQuattroS-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --ifm-color-primary: hsl(31, 23%, 55%);
+  --ifm-color-primary-dark: hsl(31, 23%, 45%);
+  --ifm-color-primary-darker: hsl(31, 23%, 35%);
+  --ifm-color-primary-darkest: hsl(31, 23%, 25%);
+  --ifm-color-primary-light: hsl(31, 23%, 65%);
+  --ifm-color-primary-lighter: hsl(31, 23%, 75%);
+  --ifm-color-primary-lightest: hsl(31, 23%, 85%);
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: 'iA Writer Quattro', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --ifm-font-family-monospace: 'iA Writer Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
