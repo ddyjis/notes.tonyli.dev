@@ -11,5 +11,5 @@ aliases:
 ```typescript
 import '@total-typescript/ts-reset'
 
-const filteredArray = [1, 2, undefined].filter(Boolean)  // gives number[]
+const filteredArray = [1, 2, undefined].filter(Boolean) // gives number[]
 ```

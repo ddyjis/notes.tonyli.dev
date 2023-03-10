@@ -6,7 +6,8 @@ aliases:
 
 # 0035 Search Insert Position
 
-Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+Given a sorted array of distinct integers and a target value, return the index if the target is
+found. If not, return the index where it would be if it were inserted in order.
 
 You must write an algorithm with `O(log n)` runtime complexity.
 
@@ -61,17 +62,17 @@ def searchInsert(self, nums: List[int], target: int) -> int:
 
 ```typescript
 function searchInsert(nums: number[], target: number): number {
-    if (target > nums[nums.length - 1]) return nums.length
-    if (target < nums[0]) return 0
-    let lowerBound = 0
-    let upperBound = nums.length - 1
-    let index: number
-    while (lowerBound <= upperBound) {
-        index = Math.floor(0.5 * lowerBound + 0.5 * upperBound)
-        if (nums[index] === target) return index
-        if (nums[index] < target) lowerBound += 1
-        if (nums[index] > target) upperBound -= 1
-    }
-    return lowerBound;
-};
+  if (target > nums[nums.length - 1]) return nums.length
+  if (target < nums[0]) return 0
+  let lowerBound = 0
+  let upperBound = nums.length - 1
+  let index: number
+  while (lowerBound <= upperBound) {
+    index = Math.floor(0.5 * lowerBound + 0.5 * upperBound)
+    if (nums[index] === target) return index
+    if (nums[index] < target) lowerBound += 1
+    if (nums[index] > target) upperBound -= 1
+  }
+  return lowerBound
+}
 ```

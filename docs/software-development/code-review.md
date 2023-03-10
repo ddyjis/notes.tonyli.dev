@@ -12,7 +12,8 @@ This graph shows what should be focused on and how much time should be spent on 
 
 #todo Review it some time
 
-Source: [The Code Review Pyramid - Gunnar Morling](https://www.morling.dev/blog/the-code-review-pyramid/)
+Source:
+[The Code Review Pyramid - Gunnar Morling](https://www.morling.dev/blog/the-code-review-pyramid/)
 
 ## Article
 

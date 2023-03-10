@@ -23,6 +23,7 @@ Related to imposter syndrome
 
 Someone's feeling on his/her rights
 
-小朋友的話有三種——正常、膨脹、不足︰膨脹者會要求自己有特殊優越地位；不足者唔會意識到自己嘅基本權利；正常嘅會合理回應期望、亦會意識到權利同感受嘅關係，從而産生良好嘅自我形象
+小朋友的話有三種——正常、膨脹、不足︰膨脹者會要求自己有特殊優越地位；不足者唔會意識到自己嘅基本權利；
+正常嘅會合理回應期望、亦會意識到權利同感受嘅關係，從而産生良好嘅自我形象
 
 [Entitlement - Wikipedia](https://en.wikipedia.org/wiki/Entitlement)

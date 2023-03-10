@@ -1,6 +1,6 @@
 ---
 title: My Reading List
-aliases: 
+aliases:
   - My Reading List
 ---
 

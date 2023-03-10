@@ -1,6 +1,6 @@
 ---
 title: Property Market
-aliases: 
+aliases:
   - Property Market
 ---
 
@@ -11,7 +11,8 @@ aliases:
 - Low supply in winter, price will be higher
 - Demand starts to increase in March
 
-**Example**: 2021S4 because of COVID, construction of new condos are delayed. Supply decreased a lot to price went record high and peak at Jan and Feb 2022. In March the price stopped rising
+**Example**: 2021S4 because of COVID, construction of new condos are delayed. Supply decreased a lot
+to price went record high and peak at Jan and Feb 2022. In March the price stopped rising
 
 Vacancy is about 1.5% in Ontario, 1.1% in Toronto
 

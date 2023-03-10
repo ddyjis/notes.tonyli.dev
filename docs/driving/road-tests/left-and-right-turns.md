@@ -1,7 +1,7 @@
 ---
 title: Left & right turns
 aliases:
-- Left and right turns
+  - Left and right turns
 ---
 
 # Left and right turns
@@ -11,7 +11,7 @@ aliases:
 This driving task begins when the examiner tells you to make a left or right turn, and ends at the
 point just before you enter the intersection. Make sure you take the following actions
 
-### Traffic check**
+### Traffic check
 
 Before slowing down, look all around you. Use your rearview and side mirrors to check traffic behind
 you. If you change lanes, remember to check your ==blind spot== by looking over your shoulder.

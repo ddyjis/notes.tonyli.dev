@@ -1,7 +1,6 @@
-
 ---
 title: 0014 Longest Common Prefix
-aliases: 
+aliases:
   - 0014 Longest Common Prefix
 ---
 
@@ -29,15 +28,15 @@ If there is no common prefix, return an empty string `""`.
 
 ```javascript
 function longestCommonPrefix(strs: string[]): string {
-    let prefix = strs.shift();
-    strs.forEach((str) => {
-        while (!str.startsWith(prefix)) {
-            prefix = prefix.substring(0, prefix.length - 1);
-        }
-        if (!prefix) return ""
-    })
-    return prefix;
-};
+  let prefix = strs.shift()
+  strs.forEach((str) => {
+    while (!str.startsWith(prefix)) {
+      prefix = prefix.substring(0, prefix.length - 1)
+    }
+    if (!prefix) return ''
+  })
+  return prefix
+}
 ```
 
 https://leetcode.com/problems/longest-common-prefix/

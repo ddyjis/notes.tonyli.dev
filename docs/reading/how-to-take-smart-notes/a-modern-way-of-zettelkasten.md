@@ -1,6 +1,6 @@
 ---
 title: Modern Zettelkasten
-aliases: 
+aliases:
   - A Modern Way of Zettelkasten
 ---
 

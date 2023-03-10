@@ -6,7 +6,8 @@ aliases:
 
 # You only think when you write
 
-Thinking happens all the time inside our brains, even if we are not aware of it. However, we are also not aware of the things that we forget. So I am totally agree with the saying
+Thinking happens all the time inside our brains, even if we are not aware of it. However, we are
+also not aware of the things that we forget. So I am totally agree with the saying
 
 > If you are thinking without writing, you only think you are thinking.  
 > -- Leslie Lamport

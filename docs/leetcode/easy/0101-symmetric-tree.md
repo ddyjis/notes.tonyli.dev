@@ -1,12 +1,13 @@
 ---
 title: 0101 Symmetric Tree
-aliases: 
+aliases:
   - 0101 Symmetric Tree
 ---
 
 # 0101 Symmetric Tree
 
-Given the `root` of a binary tree, *check whether it is a mirror of itself* (i.e., symmetric around its center).
+Given the `root` of a binary tree, _check whether it is a mirror of itself_ (i.e., symmetric around
+its center).
 
 ```
      1
@@ -35,19 +36,19 @@ Output: false
 ```python
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        
+
         def dfs(node1: Optional[TreeNode], node2: Optional[TreeNode]) -> bool:
             if not node1 and not node2: return True
             if node1 and not node2 or node2 and not node1 or node1.val != node2.val: return False
             return dfs(node1.left, node2.right) and dfs(node1.right, node2.left)
-        
+
         return dfs(root.left, root.right)
 ```
 
 ```python
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        
+
         queue = [root, root]
         while queue:
             node1 = queue.pop()

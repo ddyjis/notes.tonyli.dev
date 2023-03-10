@@ -1,6 +1,6 @@
 ---
 title: JSON Columns
-aliases: 
+aliases:
   - JSON Columns
   - Use JSON Columns for Complicated Data
 ---

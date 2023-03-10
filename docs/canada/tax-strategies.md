@@ -20,8 +20,8 @@ aliases:
 
 ### 其他資料
 
-- [**Death of a TFSA holder**](https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/death-a-tfsa-holder.html)  
-- [**Breakdown of marriage or common-law partnership**](https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/transfers/transfers-upon-breakdown-marriage-common-law-partnership.html)  
+- [**Death of a TFSA holder**](https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/death-a-tfsa-holder.html)
+- [**Breakdown of marriage or common-law partnership**](https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/transfers/transfers-upon-breakdown-marriage-common-law-partnership.html)
 - [**Leaving Canada - Are you considered a non-resident?**](https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/who-open-a-tfsa.html#tsvsnnrsdnt)
 
 ## Registered Retirement Savings Plans
@@ -32,9 +32,9 @@ Contribution limit is 18% of the earned income, upper limit is $29210 (2022)
 - 提款會計入當年收入
 - 未用完嘅 contribution room 會計落下一年
 - 有分
-	- 個人
-	- 伴侶
-	- 群組（Group RRSP）（老闆整嘅）
-	- 集資（Pooled RRSP）（小企業用）
+  - 個人
+  - 伴侶
+  - 群組（Group RRSP）（老闆整嘅）
+  - 集資（Pooled RRSP）（小企業用）
 - 到 71 歲時，RRSP 就要提取或轉入 RRIF ( #todo : find out more ) 或放入年金
 - [Registered Retirement Savings Plan (RRSP) - Canada.ca](https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/rrsps-related-plans/registered-retirement-savings-plan-rrsp.html)
