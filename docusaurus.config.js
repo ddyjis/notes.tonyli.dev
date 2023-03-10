@@ -5,6 +5,24 @@ const title = require("title");
 const lightCodeTheme = require("prism-react-renderer/themes/duotoneLight");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
+/**
+ * @param {import('@docusaurus/plugin-content-docs/src/sidebars/types').NormalizedSidebar} items
+ */
+function fixLabels(items) {
+  const getProperCase = (/** @type {string} */ str) =>
+    title(str).replace(/-/g, " ");
+
+  const result = items.map((item) => {
+    // @ts-ignore
+    item.label = item.label ? getProperCase(item.label) : undefined;
+    if (item.type === "category") {
+      return { ...item, items: fixLabels(item.items) };
+    }
+    return item;
+  });
+  return result;
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Notes",
@@ -34,19 +52,9 @@ const config = {
             defaultSidebarItemsGenerator,
             ...args
           }) {
-            const items = (await defaultSidebarItemsGenerator({ ...args })).map(
-              (item) => {
-                // @ts-ignore
-                item.label = item.label
-                  ? // @ts-ignore
-                    title(item.label).replace(/-/g, " ")
-                  : // @ts-ignore
-                    item.label;
-                return item;
-              }
-            );
+            const items = await defaultSidebarItemsGenerator({ ...args });
 
-            return items;
+            return fixLabels(items);
           },
         },
         blog: false,
