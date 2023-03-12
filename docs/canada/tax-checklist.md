@@ -1,0 +1,53 @@
+---
+title: Tax Checklist
+aliases:
+  - Tax Checklist
+---
+
+- Slips
+  - T4
+  - Employment insurance benefits (T4A / T4E)
+  - COVID19 relief payments or repayments
+  - Interest, dividends, mutual funds (T3, T5, T5008)
+  - T2202 Tuition and Enrollment Certificate
+  - Old Age Security and CPP benefits (T4A-OAS, T4AP)
+  - Other pensions and annuities (T4A)
+  - Social assistance payments (T5007)
+  - Workers' compensation benefits (T5007)
+  - All other information slips
+- Receipts
+  - RRSP contribution receipts
+  - Support for a child, spouse or common-law partner
+  - Professional or union dues
+  - Tool expenses (Tradesperson & apprentice mechanics)
+  - Office-in-home expenses (if working at home due to COVID)
+  - Other employment expenses
+  - Teacher's school supplies
+  - Medical expenses
+  - Home renovations (seniors and disabled)
+  - Charitable donations
+  - Political contributions
+  - Child care expenses
+  - Adoption expenses
+  - Moving expenses
+  - Interest paid on student loans
+  - Carrying charges and interest expenses
+  - Exams for professional certification
+  - Digital news subscription
+  - Labour Mobility Deduction for Tradespeople
+- Other documentation
+  - Notice of Assessment / Reassessment
+  - Canada Revenue Agency correspondence
+  - Sale of principal residence
+  - Sale or deemed sale of stocks, bonds or real estate
+  - Northern residents deductions receipts
+  - Rental income and expense receipts
+  - Business, farm or fishing income/expenses
+  - Automobile/Travel logbook and expenses
+  - Disability Tax Credit Certificate
+  - Declaration of Conditions of Employment (T2200 or T2200S)
+  - Volunteer Firefighters certification
+  - Search and Rescue volunteers certification
+  - Written certification for eligible educator school supplies
+
+[TS23_Tax-Checklist_8.5x11in_ENG.pdf (hrblock.ca)](https://www.hrblock.ca/media/Documents/TS23_Tax-Checklist_8.5x11in_ENG.pdf)
