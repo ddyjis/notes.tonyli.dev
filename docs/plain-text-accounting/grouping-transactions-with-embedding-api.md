@@ -21,16 +21,14 @@ To use OpenAI embedding API, you need to do the following steps:
 - Sign up for an OpenAI account and get your API key .[^1]
 - Choose an embedding model that suits your  
   task. [For text embeddings, we recommend using `text-embedding-ada-002` for nearly all use cases](https://platform.openai.com/docs/guides/embeddings).[^2]
-- Use the `/embeddings` endpoint to send your input text or code and receive an array of
-  embeddings  
-  as a response. You can use any programming language that supports HTTP requests, such as Python,  
-  Node.js, JavaScript, etc.
+- Use the `/embeddings` endpoint to send your input text or code and receive an array of  
+  embeddings as a response. You can use any programming language that supports HTTP requests, such  
+  as Python, Node.js, JavaScript, etc.
 - Use the embeddings to perform tasks like semantic search, clustering, topic modeling or  
   classification.
 
-For example, if you want to use Python to get the embeddings for your transactions and map them to
-a  
-list of items you buy, you can use the following code:
+For example, if you want to use Python to get the embeddings for your transactions and map them to  
+a list of items you buy, you can use the following code:
 
 ```python
 import openai
@@ -92,9 +90,8 @@ Transferred $500 to savings account -> Books
 ```
 
 This is a very simple example of how to use OpenAI embedding API to get the embeddings for your  
-transactions and map them to a list of items you buy. You can modify it or use other models or
-tools  
-to handle more complex cases or different formats.
+transactions and map them to a list of items you buy. You can modify it or use other models or  
+tools to handle more complex cases or different formats.
 
 I hope this example helps you understand how to use OpenAI embedding API.😊
 
