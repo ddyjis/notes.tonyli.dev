@@ -5,6 +5,8 @@ aliases:
   - Cocomelon Nursery Universe
 ---
 
+# My top 10 Songs in Cocomelon Nursery Universe (CNU)
+
 [I Love the Mountains | CoComelon Nursery Rhymes & Kids Songs - YouTube](https://www.youtube.com/watch?v=NimD3J37y3I)
 
 > I love the mountains.  

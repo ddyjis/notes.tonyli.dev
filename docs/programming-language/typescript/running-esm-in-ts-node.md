@@ -4,7 +4,9 @@ aliases:
   - Running ESM in ts-node
 ---
 
-In `package.json` set `"type": "module"`. This may break the project so remember to delete it when
+# Running ESM in `ts-node`
+
+In `package.json` set `"type": "module"`. This may break the project so remember to delete it when  
 running the project
 
 ```bash
