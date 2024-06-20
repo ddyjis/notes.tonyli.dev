@@ -5,5 +5,6 @@
   "showIndentGuide": true,
   "tabSize": 2,
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "absolute"
+  "newLinkFormat": "absolute",
+  "propertiesInDocument": "source"
 }
