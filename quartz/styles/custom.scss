@@ -1,3 +1,18 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+article a.internal:not([role="anchor"]) {
+    padding: 0.125rem 0.5rem;
+
+    &::before {
+        content: "[[ "
+    }
+    &::after {
+        content: " ]]"
+    }
+}
+
+// Hide the first H1 which is duplicated as the page title
+article > h1:first-of-type {
+    display: none;
+}
