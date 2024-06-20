@@ -1,14 +1,24 @@
 @use "./base.scss";
 
 // put your custom CSS here!
-article a.internal:not([role="anchor"]) {
-    padding: 0.125rem 0.5rem;
-
-    &::before {
-        content: "[[ "
+article {
+    a.internal:not([role="anchor"]) {
+        padding: 0.125rem 0.5rem;
+        
+        &::before {
+            content: "[[ "
+        }
+        &::after {
+            content: " ]]"
+        }
     }
-    &::after {
-        content: " ]]"
+    a.tag-link.internal {
+        &::before {
+            content: "#"
+        }
+        &::after {
+            content: ""
+        }
     }
 }
 
