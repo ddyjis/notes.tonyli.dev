@@ -1,28 +1,66 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+// Wikilinks styles
 article {
-    a.internal:not([role="anchor"]) {
+    // role="anchor" are headings links
+    // href$="#" are same-page references
+    a.internal:not([role="anchor"]):not([href^="#"]) {
         padding: 0.125rem 0.5rem;
         
         &::before {
-            content: "[[ "
+            content: "[[ ";
+            display: inline-block;
         }
         &::after {
-            content: " ]]"
+            content: " ]]";
+            display: inline-block;
         }
     }
-    a.tag-link.internal {
+    a.tag-link.internal[href^="./tags/"] {
         &::before {
-            content: "#"
+            content: "#";
+            display: inline-block;
         }
         &::after {
-            content: ""
+            content: "";
         }
+    }
+    a.internal[data-footnote-ref],
+    a.internal[data-footnote-backref] {
+        background: unset;
     }
 }
 
 // Hide the first H1 which is duplicated as the page title
 article > h1:first-of-type {
     display: none;
+}
+
+// Override the hyphens settings in Quartz (excluding .katex and .math)
+article {
+    p,
+    ul,
+    text,
+    a,
+    tr,
+    td,
+    li,
+    ol,
+    u {
+        hyphens: unset;
+    }
+}
+
+// Styling the headers
+article {
+    h1{
+        letter-spacing: 0.075rem; 
+    }
+    h2 {
+        letter-spacing: 0.125rem; 
+    }
+}
+.page-header h1 {
+    letter-spacing: 0.075rem; 
 }
