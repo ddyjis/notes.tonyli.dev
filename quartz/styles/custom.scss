@@ -3,21 +3,21 @@
 // put your custom CSS here!
 // Wikilinks styles
 article {
-    // role="anchor" are headings links
-    // href$="#" are same-page references
-    a.internal:not([role="anchor"]):not([href^="#"]) {
+    a.wiki-link {
         padding: 0.125rem 0.5rem;
         
         &::before {
-            content: "[[ ";
+            content: "[[";
+            margin-right: 1ch;
             display: inline-block;
         }
         &::after {
-            content: " ]]";
+            content: "]]";
+            margin-left: 1ch;
             display: inline-block;
         }
     }
-    a.tag-link.internal[href^="./tags/"] {
+    a.tag-link {
         &::before {
             content: "#";
             display: inline-block;
@@ -26,8 +26,8 @@ article {
             content: "";
         }
     }
-    a.internal[data-footnote-ref],
-    a.internal[data-footnote-backref] {
+    a[data-footnote-ref],
+    a[data-footnote-backref] {
         background: unset;
     }
 }
