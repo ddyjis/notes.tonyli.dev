@@ -290,6 +290,13 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options> 
                 return {
                   type: "link",
                   url,
+                  // Begin: my customization on styling wikilinks
+                  data: {
+                    hProperties: {
+                      className: ["wiki-link"],
+                    },
+                  },
+                  // End: my customization on styling wikilinks
                   children: [
                     {
                       type: "text",
