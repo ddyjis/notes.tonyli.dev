@@ -64,3 +64,15 @@ article {
 .page-header h1 {
     letter-spacing: 0.075rem; 
 }
+
+// Explorer
+#explorer-content {
+    ul > li ul {
+        li {
+            line-height: 1.5rem;
+        }
+        li + li {
+            margin-top: 0.5rem;
+        }
+    }
+}
