@@ -20,9 +20,9 @@ const Layout = ({children}: {children: React.ReactNode}) => {
           rel='stylesheet'
         />
       </head>
-      <body className={cn('flex h-screen flex-col bg-white font-mono antialiased', font.variable)}>
+      <body className={cn('h-screen bg-white font-mono antialiased', font.variable)}>
         <Navbar />
-        <div className='container flex-1 overflow-auto py-4'>{children}</div>
+        <div className='container max-w-xl flex-1 overflow-auto py-4'>{children}</div>
       </body>
     </html>
   )
