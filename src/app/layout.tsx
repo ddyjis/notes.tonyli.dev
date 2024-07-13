@@ -15,6 +15,10 @@ const Layout = ({children}: {children: React.ReactNode}) => {
       <head>
         <link rel='icon' href='/favicon.ico' sizes='any' />
         <link rel='apple-touch-icon' href='/apple-touch-icon.png' type='image/png' />
+        <link
+          href='https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css'
+          rel='stylesheet'
+        />
       </head>
       <body className={cn('flex h-screen flex-col bg-white font-mono antialiased', font.variable)}>
         <Navbar />
