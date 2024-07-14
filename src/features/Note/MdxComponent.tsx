@@ -1,8 +1,10 @@
 'use client'
 
-import {cn} from '@/lib/utils'
-import {getMDXComponent, type MDXContentProps} from 'mdx-bundler/client'
+import {type MDXContentProps, getMDXComponent} from 'mdx-bundler/client'
+import NextLink from 'next/link'
 import {useMemo} from 'react'
+
+import {cn} from '@/lib/utils'
 
 const COMPONENTS = {
   h1: ({className, ...props}) => (
@@ -19,6 +21,11 @@ const COMPONENTS = {
   ),
   blockquote: ({className, ...props}) => (
     <blockquote {...props} className={cn(className, 'mt-2 mb-2 border-l-2 py-1 pl-2 text-base')} />
+  ),
+  hashtag: ({value}) => (
+    <NextLink href={`/_/tags/${value}`} className='font-semibold text-primary'>
+      #{value}
+    </NextLink>
   ),
 } satisfies MDXContentProps['components']
 
