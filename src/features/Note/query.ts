@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
 import {getWikiLinkPlugin, remarkHashtags} from '@/lib/remark'
-import {getNoteIds} from './data'
+import {getNoteMapping} from './data'
 
 export const getMdxBundle = async (id: string) => {
   const filepath = `${process.cwd()}/content/${id}.md`
@@ -22,7 +22,7 @@ export const getMdxBundle = async (id: string) => {
         ...(options.remarkPlugins ?? []),
         remarkMath,
         remarkGfm,
-        getWikiLinkPlugin(Array.from(getNoteIds()).map((id) => id.replace('index', ''))),
+        getWikiLinkPlugin(Object.keys(getNoteMapping()).map((id) => id.replace('index', ''))),
         remarkHashtags,
       ]
       options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeKatex]
