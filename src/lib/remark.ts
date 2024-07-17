@@ -1,4 +1,5 @@
 import type {BundleMDXOptions} from 'mdx-bundler/dist/types'
+import {cache} from 'react'
 import remarkParse from 'remark-parse'
 import remarkWikiLink from 'remark-wiki-link'
 import {unified} from 'unified'
@@ -69,7 +70,7 @@ export const remarkHashtags: Plugin = () => {
   }
 }
 
-export const preprocessMarkdown = (fileContentMap: Record<string, string>) => {
+export const preprocessMarkdown = cache((fileContentMap: Record<string, string>) => {
   const hashtagToFiles: Record<string, Set<string>> = {}
   const fileToWikilinks: Record<string, Set<string>> = {}
 
@@ -103,11 +104,8 @@ export const preprocessMarkdown = (fileContentMap: Record<string, string>) => {
     hashtags: Object.fromEntries(
       Object.entries(hashtagToFiles).map(([hashtag, files]) => [hashtag, Array.from(files)]),
     ),
-    wikilinks: Object.fromEntries(
-      Object.entries(fileToWikilinks).map(([filename, wikilinks]) => [
-        filename,
-        Array.from(wikilinks),
-      ]),
+    wikilinks: Object.entries(fileToWikilinks).flatMap(([filename, wikilinks]) =>
+      Array.from(wikilinks).map((to) => ({from: filename, to})),
     ),
   }
-}
+})

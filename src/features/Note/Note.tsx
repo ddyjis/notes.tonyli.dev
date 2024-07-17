@@ -1,3 +1,4 @@
+import {Backlinks} from './Backlinks'
 import {Frontmatter} from './Frontmatter'
 import {MdxComponent} from './MdxComponent'
 import {getMdxBundle} from './query'
@@ -19,6 +20,7 @@ export const Note = async ({id}: Note.Props) => {
         updateDate={frontmatter['date modified']}
       />
       <MdxComponent code={code} />
+      <Backlinks id={id} />
     </div>
   )
 }
