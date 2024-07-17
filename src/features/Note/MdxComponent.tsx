@@ -9,21 +9,27 @@ import {cn} from '@/lib/utils'
 
 const COMPONENTS = {
   h1: ({className, ...props}) => (
-    <h1 {...props} className={cn(className, 'mt-3 mb-2 font-bold text-3xl first:hidden')} />
+    <h1 {...props} className={cn(className, 'mt-7 mb-2 font-bold text-3xl')} />
   ),
   h2: ({className, ...props}) => (
-    <h2 {...props} className={cn(className, 'mt-2 mb-2 font-bold text-2xl')} />
+    <h2 {...props} className={cn(className, 'mt-6 mb-2 font-bold text-2xl')} />
   ),
   h3: ({className, ...props}) => (
-    <h3 {...props} className={cn(className, 'mt-2 mb-2 font-bold text-xl')} />
+    <h3 {...props} className={cn(className, 'mt-5 mb-2 font-bold text-xl')} />
   ),
   p: ({className, ...props}) => (
-    <p {...props} className={cn(className, 'mt-2 mb-2 text-base leading-snug')} />
+    <p {...props} className={cn(className, 'mt-5 mb-2 text-base leading-[1.6rem]')} />
+  ),
+  a: ({className, ...props}) => (
+    <a {...props} className={cn(className, 'text-primary underline')} />
   ),
   blockquote: ({className, ...props}) => (
     <blockquote
       {...props}
-      className={cn(className, '-ml-2 mt-2 mb-2 border-l-2 py-1 pl-2 text-base')}
+      className={cn(
+        className,
+        '-ml-2 &_p:mt-0 mt-2 mb-2 border-l-2 bg-primary/10 px-2 py-1 text-base first:*:mt-2',
+      )}
     />
   ),
   ul: ({className, ...props}) => (
@@ -33,7 +39,7 @@ const COMPONENTS = {
     <ol {...props} className={cn(className, 'mt-2 mb-2 list-decimal pl-5 text-base')} />
   ),
   li: ({className, ...props}) => (
-    <li {...props} className={cn(className, 'mt-2 mb-2 text-base leading-snug')} />
+    <li {...props} className={cn(className, 'text-base leading-[1.6rem]')} />
   ),
   table: Table,
   thead: TableHeader,
@@ -59,7 +65,7 @@ export const MdxComponent = ({code}: MdxComponent.Props) => {
 
   // Wrap the MDX content in a div to so that the first h1 is hidden
   return (
-    <div>
+    <div className='first:*:hidden'>
       <Component components={COMPONENTS} />
     </div>
   )
