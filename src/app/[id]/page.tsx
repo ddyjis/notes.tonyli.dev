@@ -1,6 +1,6 @@
 import {Note} from '@/features/Note'
 
-const NotePage = async ({params}: {params: {id: string}}) => {
+const NotePage = ({params}: {params: {id: string}}) => {
   return <Note id={params.id} />
 }
 

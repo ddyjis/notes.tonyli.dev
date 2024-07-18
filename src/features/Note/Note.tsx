@@ -1,7 +1,8 @@
+import {getMdxBundle} from '@/lib/mdx-bundle'
+
 import {Backlinks} from './Backlinks'
 import {Frontmatter} from './Frontmatter'
 import {MdxComponent} from './MdxComponent'
-import {getMdxBundle} from './query'
 
 namespace Note {
   export type Props = {

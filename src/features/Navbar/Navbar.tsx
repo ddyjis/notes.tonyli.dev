@@ -5,10 +5,11 @@ import logo from '@/app/pensieve.png'
 
 export const Navbar = () => (
   <nav className='sticky top-0 z-50 border-b-2 bg-white py-4'>
-    <div className='container max-w-xl'>
+    <div className='container flex max-w-xl items-center justify-between gap-4'>
       <NextLink href='/'>
         <NextImage src={logo} alt='Index' height='32' />
       </NextLink>
+      <NextLink href='/_/tags'>Tags</NextLink>
     </div>
   </nav>
 )

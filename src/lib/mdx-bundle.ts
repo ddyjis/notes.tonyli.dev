@@ -2,14 +2,15 @@ import {existsSync} from 'node:fs'
 import {readFile} from 'node:fs/promises'
 import {bundleMDX} from 'mdx-bundler'
 import {notFound} from 'next/navigation'
+import {cache} from 'react'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
+import {getNoteMapping} from '@/lib/metadata'
 import {getWikiLinkPlugin, remarkHashtags} from '@/lib/remark'
-import {getNoteMapping} from './data'
 
-export const getMdxBundle = async (id: string) => {
+export const getMdxBundle = cache(async (id: string) => {
   const filepath = `${process.cwd()}/content/${id}.md`
   if (!existsSync(filepath)) {
     notFound()
@@ -29,4 +30,4 @@ export const getMdxBundle = async (id: string) => {
       return options
     },
   })
-}
+})

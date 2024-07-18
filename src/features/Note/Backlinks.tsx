@@ -4,10 +4,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import {MdxComponent} from '@/features/Note/MdxComponent'
+import {getMdxBundle} from '@/lib/mdx-bundle'
+import {getNoteMapping} from '@/lib/metadata'
 import {preprocessMarkdown} from '@/lib/remark'
-import {getNoteMapping} from './data'
-import {getMdxBundle} from './query'
+
+import {MdxComponent} from './MdxComponent'
 
 namespace Backlinks {
   export type Props = {id: string}

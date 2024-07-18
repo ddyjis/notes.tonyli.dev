@@ -1,9 +1,5 @@
-import {Note} from '@/features/Note/Note'
+import {Note} from '@/features/Note'
 
-const IndexPage = () => (
-  <h1>
-    <Note id='index' />
-  </h1>
-)
+const IndexPage = () => <Note id='index' />
 
 export default IndexPage
