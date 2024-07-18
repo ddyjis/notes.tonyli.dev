@@ -84,7 +84,7 @@ export const preprocessMarkdown = cache((fileContentMap: Record<string, string>)
     parser.runSync(ast)
 
     visit(ast, 'hashtag', (node) => {
-      const hashtag = node.data.hProperties.value
+      const hashtag = node.data.hProperties.value.toLowerCase()
       if (!hashtagToFiles[hashtag]) {
         hashtagToFiles[hashtag] = new Set()
       }
