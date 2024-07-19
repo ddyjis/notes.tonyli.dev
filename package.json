@@ -7,10 +7,14 @@
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
     "esbuild": "^0.23.0",
     "lucide-react": "^0.408.0",
+    "lunr": "^2.3.9",
     "mdast": "^3.0.0",
     "mdx-bundler": "^10.0.2",
     "next": "^14.2.5",
@@ -29,6 +33,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@types/lunr": "^2.3.7",
     "@types/node": "20.14.10",
     "@types/react": "18.3.3",
     "autoprefixer": "^10.4.19",
