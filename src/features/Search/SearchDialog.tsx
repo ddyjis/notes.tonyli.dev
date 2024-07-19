@@ -9,12 +9,15 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from '@/components/ui/command'
 
+import {useHistory} from '@/features/History'
 import {useSearch} from './hooks'
 
 export const SearchDialog = (props: DialogProps) => {
   const {search, setSearch, results} = useSearch()
+  const history = useHistory()
 
   return (
     <CommandDialog {...props} shouldFilter={false}>
@@ -29,6 +32,12 @@ export const SearchDialog = (props: DialogProps) => {
             ))}
           </CommandGroup>
         )}
+        <CommandSeparator />
+        <CommandGroup heading='History'>
+          {history.slice(0, 10).map((item) => (
+            <CommandItem key={item.id}>{item.id}</CommandItem>
+          ))}
+        </CommandGroup>
       </CommandList>
     </CommandDialog>
   )

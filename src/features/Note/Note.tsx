@@ -2,6 +2,7 @@ import {getMdxBundle} from '@/lib/mdx-bundle'
 
 import {Backlinks} from './Backlinks'
 import {Frontmatter} from './Frontmatter'
+import {HistoryHandler} from './HistoryHandler'
 import {MdxComponent} from './MdxComponent'
 
 namespace Note {
@@ -15,6 +16,7 @@ export const Note = async ({id}: Note.Props) => {
 
   return (
     <div>
+      <HistoryHandler id={id} />
       <Frontmatter
         title={frontmatter.title}
         createDate={frontmatter.date}
