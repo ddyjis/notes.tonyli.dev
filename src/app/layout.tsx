@@ -2,14 +2,17 @@ import '@/app/global.css'
 import type {Metadata} from 'next'
 import {Fira_Code} from 'next/font/google'
 
-import {cn} from '@/lib/utils'
+import {FrontmatterCache} from '@/features/FrontmatterCache'
 import {Navbar} from '@/features/Navbar'
+import {getNotesFrontmatterMapping} from '@/lib/metadata'
+import {cn} from '@/lib/utils'
 
 export const metadata = {
   title: '__tony_li__',
 } satisfies Metadata
 
-const Layout = ({children}: {children: React.ReactNode}) => {
+const Layout = async ({children}: {children: React.ReactNode}) => {
+  const frontmatterCache = await getNotesFrontmatterMapping()
   return (
     <html lang='en'>
       <head>
@@ -21,6 +24,7 @@ const Layout = ({children}: {children: React.ReactNode}) => {
         />
       </head>
       <body className={cn('h-screen bg-white font-mono antialiased', font.variable)}>
+        <FrontmatterCache data={frontmatterCache} />
         <Navbar />
         <div className='container max-w-xl flex-1 overflow-auto py-4'>{children}</div>
       </body>

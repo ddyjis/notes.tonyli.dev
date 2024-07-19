@@ -16,18 +16,17 @@ export const getMdxBundle = cache(async (id: string) => {
     notFound()
   }
   const content = await readFile(filepath, 'utf8')
-  return bundleMDX({
-    source: content,
-    mdxOptions(options) {
-      options.remarkPlugins = [
-        ...(options.remarkPlugins ?? []),
-        remarkMath,
-        remarkGfm,
-        getWikiLinkPlugin(Object.keys(getNoteMapping()).map((id) => id.replace('index', ''))),
-        remarkHashtags,
-      ]
-      options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeKatex]
-      return options
-    },
-  })
+  return bundleMDX({source: content, mdxOptions})
 })
+
+export const mdxOptions: Parameters<typeof bundleMDX>[0]['mdxOptions'] = (options) => {
+  options.remarkPlugins = [
+    ...(options.remarkPlugins ?? []),
+    remarkMath,
+    remarkGfm,
+    getWikiLinkPlugin(Object.keys(getNoteMapping()).map((id) => id.replace('index', ''))),
+    remarkHashtags,
+  ]
+  options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeKatex]
+  return options
+}
