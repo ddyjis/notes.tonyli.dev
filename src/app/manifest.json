@@ -1,6 +1,9 @@
 {
-  "name": "Pensieve",
-  "short_name": "Pensieve",
+  "name": "Tony Li's Notes",
+  "short_name": "Notes",
+  "description": "ひとつなぎの大秘寶",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +16,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#a78d72",
-  "background_color": "#f8f9fa",
+  "theme_color": "#f97316",
+  "background_color": "#ffffff",
   "display": "standalone"
 }
