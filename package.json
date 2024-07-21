@@ -1,12 +1,12 @@
 {
   "name": "notes.tonyli.dev",
   "scripts": {
-    "dev": "preflight && next dev",
-    "build": "preflight && next build",
+    "dev": "pnpm preflight && next dev",
+    "build": "pnpm preflight && next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --pretty --noEmit",
-    "preflight": "ts-node src/lib/preflight"
+    "preflight": "tsx src/lib/preflight"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
