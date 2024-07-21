@@ -9,6 +9,7 @@ import {cn} from '@/lib/utils'
 
 export const metadata = {
   title: '__tony_li__',
+  description: 'ひとつなぎの大秘寶',
 } satisfies Metadata
 
 const Layout = async ({children}: {children: React.ReactNode}) => {
