@@ -1,8 +1,8 @@
 namespace Frontmatter {
   export type Props = {
     title?: string
-    createDate?: Date
-    updateDate?: Date
+    createDate?: string
+    updateDate?: string
   }
 }
 
@@ -11,11 +11,9 @@ export const Frontmatter = ({title, createDate, updateDate}: Frontmatter.Props) 
     <div className='flex flex-col items-center gap-2'>
       <h1 className='font-bold text-2xl'>{title}</h1>
       <div className='flex w-full justify-between'>
-        {createDate && <div className='text-slate-400'>C: {formatDate(createDate)}</div>}
-        {updateDate && <div className='text-slate-400'>M: {formatDate(updateDate)}</div>}
+        {createDate && <div className='text-slate-400'>C: {createDate.slice(0, 10)}</div>}
+        {updateDate && <div className='text-slate-400'>M: {updateDate.slice(0, 10)}</div>}
       </div>
     </div>
   )
 }
-
-const formatDate = (date: Date) => date.toISOString().slice(0, 10)

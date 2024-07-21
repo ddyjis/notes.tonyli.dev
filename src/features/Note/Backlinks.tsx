@@ -1,12 +1,10 @@
+import {metadata} from '@/app/metadata'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import {getMdxBundle} from '@/lib/mdx-bundle'
-import {getNoteMapping} from '@/lib/metadata'
-import {preprocessMarkdown} from '@/lib/remark'
 
 import {MdxComponent} from './MdxComponent'
 
@@ -15,7 +13,7 @@ namespace Backlinks {
 }
 
 export const Backlinks = ({id}: Backlinks.Props) => {
-  const {wikilinks} = preprocessMarkdown(getNoteMapping())
+  const {wikilinks} = metadata
   const backlinks = wikilinks
     .filter(({to}) => to === id)
     .map(({from}) => from)
@@ -25,7 +23,7 @@ export const Backlinks = ({id}: Backlinks.Props) => {
 
   return (
     <div className='mt-10 flex flex-col gap-2'>
-      <h1 className='font-bold text-xl'>{`${backlinks.length} Backlinks`}</h1>
+      <h1 className='font-bold text-xl'>{`${backlinks.length} Backlink${backlinks.length > 1 ? 's' : ''}`}</h1>
       <Accordion type='multiple' className='space-y-2'>
         {backlinks.map((backlinkId) => (
           <Backlink key={backlinkId} id={backlinkId} />
@@ -36,7 +34,9 @@ export const Backlinks = ({id}: Backlinks.Props) => {
 }
 
 const Backlink = async ({id}: Backlinks.Props) => {
-  const {code, frontmatter} = await getMdxBundle(id)
+  const {code, frontmatter} = metadata.notes[id] ?? {}
+  if (!code || !frontmatter) return null
+
   return (
     <AccordionItem className='rounded-lg border border-primary/20 px-2' value={id}>
       <AccordionTrigger className='text-xl'>{frontmatter.title}</AccordionTrigger>

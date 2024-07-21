@@ -1,9 +1,9 @@
-import {getNoteMapping} from '@/lib/metadata'
-import {preprocessMarkdown} from '@/lib/remark'
 import Link from 'next/link'
 
+import {metadata} from '@/app/metadata'
+
 export const TagsList = () => {
-  const {hashtags} = preprocessMarkdown(getNoteMapping())
+  const {hashtags} = metadata
   const tags = Object.keys(hashtags)
 
   if (!tags.length) return <div>No tags</div>

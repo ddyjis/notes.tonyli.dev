@@ -4,6 +4,7 @@ import type {DialogProps} from '@radix-ui/react-dialog'
 import {useRouter} from 'next/navigation'
 import {type ComponentProps, Fragment, useMemo} from 'react'
 
+import {metadata} from '@/app/metadata'
 import {
   CommandDialog,
   CommandEmpty,
@@ -13,7 +14,6 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command'
-import {useFrontmatterCache} from '@/features/FrontmatterCache'
 import {useHistory} from '@/features/History'
 import {cn} from '@/lib/utils'
 
@@ -65,17 +65,15 @@ export const SearchDialog = (props: DialogProps) => {
 
 type HistoryItemProps = ComponentProps<typeof CommandItem> & {id: string}
 const HistoryItem = ({id, ...props}: HistoryItemProps) => {
-  const frontmatterCache = useFrontmatterCache()
-  const {frontmatter} = frontmatterCache[id] || {}
+  const {frontmatter} = metadata.notes[id] ?? {}
   if (!frontmatter) return null
   return <CommandItem {...props}>{frontmatter.title}</CommandItem>
 }
 
 type SearchItemProps = ComponentProps<typeof CommandItem> & {position: [number, number]; id: string}
 const SearchItem = ({id, position, className, ...props}: SearchItemProps) => {
-  const frontmatterCache = useFrontmatterCache()
-  const {content, frontmatter} = frontmatterCache[id] || {}
-  const words = useMemo(() => (content ?? '').split(/\s+/), [content])
+  const {document, frontmatter} = metadata.notes[id] || {}
+  const words = useMemo(() => (document ?? '').split(/\s+/), [document])
   const wordStartIndices = useMemo(
     () =>
       words.reduce<number[]>((acc, word, index) => {
@@ -85,12 +83,12 @@ const SearchItem = ({id, position, className, ...props}: SearchItemProps) => {
       }, []),
     [words],
   )
-  if (!content || !frontmatter) return null
+  if (!document || !frontmatter) return null
   return (
     <CommandItem {...props} className={cn(className, 'flex flex-col gap-1')}>
       <h1 className='font-bold text-lg'>{frontmatter.title}</h1>
       <HighlightedContent
-        content={content}
+        document={document}
         words={words}
         wordStartIndices={wordStartIndices}
         position={position}
@@ -101,13 +99,13 @@ const SearchItem = ({id, position, className, ...props}: SearchItemProps) => {
 }
 
 type HighlightedContentProps = {
-  content: string
+  document: string
   words: string[]
   wordStartIndices: number[]
   position: [number, number]
 }
 const HighlightedContent = ({
-  content,
+  document,
   words,
   wordStartIndices,
   position,
@@ -124,7 +122,7 @@ const HighlightedContent = ({
   const beforeWords = words.slice(beforeStartIndex, startWordIndex)
   const afterWords = words.slice(endWordIndex + 1, afterEndIndex)
 
-  const matchText = content.slice(startIndex, endIndex)
+  const matchText = document.slice(startIndex, endIndex)
 
   const beforeEllipses = beforeStartIndex > 0 ? '...' : ''
   const afterEllipses = afterEndIndex < words.length ? '...' : ''

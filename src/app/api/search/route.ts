@@ -1,6 +1,6 @@
+import {metadata} from '@/app/metadata'
 import lunr from 'lunr'
 
-import {getNotesFrontmatterMapping} from '@/lib/metadata'
 import {cache} from 'react'
 
 export const GET = async (request: Request) => {
@@ -15,21 +15,21 @@ export const GET = async (request: Request) => {
 export type SearchResult = {id: string; positions: [number, number][]}
 
 const getIndex = cache(async () => {
-  const noteMapping = await getNotesFrontmatterMapping()
+  const noteMapping = metadata.notes
   return lunr(function () {
     this.ref('id')
-    this.field('content')
+    this.field('document')
 
     this.metadataWhitelist = ['position']
 
-    for (const [id, {content}] of Object.entries(noteMapping)) {
-      this.add({id, content})
+    for (const [id, {document}] of Object.entries(noteMapping)) {
+      this.add({id, document})
     }
   })
 })
 const search = async (query: string) => {
   const index = await getIndex()
-  const noteMapping = await getNotesFrontmatterMapping()
+  const noteMapping = metadata.notes
   const results = index.search(query)
   return results.flatMap((result) => {
     const {ref} = result
@@ -38,7 +38,7 @@ const search = async (query: string) => {
 
     const matches = result.matchData.metadata
     const positions: [number, number][] = Object.values(matches).flatMap(
-      (data) => data.content.position,
+      (data) => data.document.position,
     )
     return {id: ref, positions}
   })

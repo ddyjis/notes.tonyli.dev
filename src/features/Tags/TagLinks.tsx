@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import {notFound} from 'next/navigation'
 
-import {getMdxBundle} from '@/lib/mdx-bundle'
-import {getNoteMapping} from '@/lib/metadata'
-import {preprocessMarkdown} from '@/lib/remark'
+import {metadata} from '@/app/metadata'
 
 namespace TagLinks {
   export type Props = {
@@ -12,7 +10,7 @@ namespace TagLinks {
 }
 
 export const TagLinks = ({tag}: TagLinks.Props) => {
-  const {hashtags} = preprocessMarkdown(getNoteMapping())
+  const {hashtags} = metadata
   const taglinks = hashtags[tag]
   if (!taglinks.length) return notFound()
   return (
@@ -32,6 +30,7 @@ namespace TagLink {
   }
 }
 const TagLink = async ({id}: TagLink.Props) => {
-  const {frontmatter} = await getMdxBundle(id)
-  return <Link href={`/${id}`}>{frontmatter.title}</Link>
+  const {frontmatter} = metadata.notes[id] ?? {}
+  if (!frontmatter) return null
+  return <Link href={`/${id}`}>{frontmatter.title?.toString() ?? id}</Link>
 }

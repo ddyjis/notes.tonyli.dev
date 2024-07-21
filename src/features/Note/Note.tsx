@@ -1,4 +1,4 @@
-import {getMdxBundle} from '@/lib/mdx-bundle'
+import {metadata} from '@/app/metadata'
 
 import {Backlinks} from './Backlinks'
 import {Frontmatter} from './Frontmatter'
@@ -12,13 +12,14 @@ namespace Note {
 }
 
 export const Note = async ({id}: Note.Props) => {
-  const {code, frontmatter} = await getMdxBundle(id)
+  const {code, frontmatter} = metadata.notes[id] ?? {}
+  if (!code || !frontmatter) return null
 
   return (
     <div>
       <HistoryHandler id={id} />
       <Frontmatter
-        title={frontmatter.title}
+        title={frontmatter.title?.toString() ?? id}
         createDate={frontmatter.date}
         updateDate={frontmatter['date modified']}
       />

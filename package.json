@@ -1,10 +1,12 @@
 {
+  "name": "notes.tonyli.dev",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --pretty --noEmit"
+    "type-check": "tsc --pretty --noEmit",
+    "preflight": "ts-node src/lib/preflight"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
@@ -29,6 +31,7 @@
     "remark-wiki-link": "^2.0.1",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.16.2",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
   },
