@@ -41,7 +41,12 @@ export const SearchDialog = (props: DialogProps) => {
             {results.map((result) => (
               <Fragment key={result.id}>
                 {result.positions.map((position) => (
-                  <SearchItem key={position[0]} id={result.id} position={position} />
+                  <SearchItem
+                    key={position[0]}
+                    id={result.id}
+                    position={position}
+                    onSelect={() => handleSelect(result.id)}
+                  />
                 ))}
               </Fragment>
             ))}
