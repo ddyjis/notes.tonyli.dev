@@ -1,8 +1,8 @@
 {
   "name": "notes.tonyli.dev",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "preflight && next dev",
+    "build": "preflight && next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --pretty --noEmit",
