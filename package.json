@@ -14,7 +14,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "esbuild": "^0.23.0",
-    "lucide-react": "^0.408.0",
+    "lucide-react": "^0.412.0",
     "lunr": "^2.3.9",
     "mdast": "^3.0.0",
     "mdx-bundler": "^10.0.2",
@@ -35,11 +35,11 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@types/lunr": "^2.3.7",
-    "@types/node": "20.14.10",
+    "@types/node": "20.14.11",
     "@types/react": "18.3.3",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "^3.4.6",
     "typescript": "5.5.3"
   }
 }
