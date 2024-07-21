@@ -18,10 +18,14 @@ export const getNoteMapping = cache(() => {
 
 export const getNotesFrontmatterMapping = cache(async () => {
   const noteMapping = getNoteMapping()
-  const entries: [string, Record<string, string>][] = []
-  for (const [id, content] of Object.entries(noteMapping)) {
+  const entries: [string, {frontmatter: Record<string, string>; content: string}][] = []
+  for (const entry of Object.entries(noteMapping)) {
+    const id = entry[0]
+    let content = entry[1]
     const {frontmatter} = await bundleMDX({source: content, mdxOptions})
-    entries.push([id, frontmatter])
+    content = content.startsWith('---') ? content.split('---').slice(2).join('---') : content
+    content = content.replaceAll('[[', '').replaceAll(']]', '')
+    entries.push([id, {frontmatter: {title: frontmatter.title}, content}])
   }
   return Object.fromEntries(entries)
 })

@@ -1,1 +1,4 @@
-export type FrontmatterCache = Record<string, Record<string, string>>
+export type FrontmatterCache = Record<
+  string,
+  {frontmatter: Record<string, string>; content: string}
+>
