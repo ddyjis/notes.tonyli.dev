@@ -12,3 +12,6 @@ tsconfig.tsbuildinfo
 
 # Obsidian
 content/.obsidian/workspace.json
+
+# App
+src/app/metadata.ts
