@@ -18,6 +18,9 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        'course-pointer': {raw: '(pointer: coarse)'},
+      },
       fontFamily: {
         mono: ['var(--font)', ...fontFamily.mono],
       },
