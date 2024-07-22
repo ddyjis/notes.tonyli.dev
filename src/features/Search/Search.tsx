@@ -1,6 +1,7 @@
 'use client'
 
 import type {DialogProps} from '@radix-ui/react-dialog'
+import {VisuallyHidden} from '@radix-ui/react-visually-hidden'
 import algoliasearch from 'algoliasearch/lite'
 import {useRouter} from 'next/navigation'
 import {type ComponentProps, useEffect, useState} from 'react'
@@ -17,6 +18,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
+import {DialogTitle} from '@/components/ui/dialog'
 import {useHistory} from '@/features/History'
 
 import {useHotkey} from './hooks'
@@ -50,6 +52,9 @@ const SearchDialog = (props: DialogProps) => {
   }
   return (
     <CommandDialog {...props} shouldFilter={false}>
+      <VisuallyHidden>
+        <DialogTitle>Algolia Search</DialogTitle>
+      </VisuallyHidden>
       <InstantSearchNext indexName='notes' searchClient={client}>
         <SearchInput />
         <CommandList className='max-h-[600px]'>
@@ -76,8 +81,6 @@ const SearchResults = ({onItemSelect}: SearchResultsProps) => {
   const {items} = useHits()
   const {query} = useSearchBox()
   const {status, results, error} = useInstantSearch()
-
-  console.log(items)
 
   if (!query) return <HistoryGroup onItemSelect={onItemSelect} />
   if (status === 'loading') return <CommandEmpty>Loading...</CommandEmpty>
