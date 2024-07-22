@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 import {existsSync, readdirSync} from 'node:fs'
 import {readFile, writeFile} from 'node:fs/promises'
 import {basename} from 'node:path'
@@ -10,6 +12,8 @@ import remarkParse from 'remark-parse'
 import remarkWikiLink from 'remark-wiki-link'
 import {unified} from 'unified'
 import {SKIP, visit} from 'unist-util-visit'
+
+import {updateAlgoliaIndex} from '@/lib/algolia'
 
 const HASHTAG_REGEX = /(?<![\w/])#(\w+)(?![\w/#])/g
 
@@ -71,8 +75,10 @@ const preprocessMdx = async () => {
 
     entries.push([id, {id, frontmatter, code, document}])
   }
+  const notes = Object.fromEntries(entries)
+  updateAlgoliaIndex(notes)
   const output: Metadata = {
-    notes: Object.fromEntries(entries),
+    notes,
     hashtags: Object.fromEntries(
       Object.entries(hashtagToIds).map(([hashtag, ids]) => [hashtag, Array.from(ids)]),
     ),
@@ -172,7 +178,7 @@ const cleanMarkdown = (content: string) => {
     ? cleanedContent.split('---').slice(2).join('---')
     : cleanedContent
   cleanedContent = cleanedContent.replaceAll('[[', '').replaceAll(']]', '')
-  return content
+  return cleanedContent
 }
 
 const parser = unified()
