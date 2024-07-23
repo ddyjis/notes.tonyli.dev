@@ -60,8 +60,7 @@ const preprocessMdx = async () => {
         return options
       },
     })
-    const document = cleanMarkdown(rawContent)
-    const ast = parser.parse(document)
+    const ast = parser.parse(rawContent)
     parser.runSync(ast)
     visit(ast, 'hashtag', (node) => {
       const hashtag = node.data.hProperties.value.toLowerCase()
@@ -78,6 +77,7 @@ const preprocessMdx = async () => {
       idToWikilinks[id].add(wikilink)
     })
 
+    const document = cleanMarkdown(rawContent)
     entries.push([id, {id, frontmatter, code, document}])
   }
   const notes = Object.fromEntries(entries)
@@ -194,13 +194,13 @@ const parser = unified()
 
 const validate = (data: Metadata) => {
   const ids = new Set(Object.keys(data.notes))
-  const linkedIds = new Set(
+  const linkedIds = new Set([
     ...data.wikilinks.map(({from}) => from),
     ...data.wikilinks.map(({to}) => to),
-  )
-  const orphan = ids.difference(linkedIds)
-  if (orphan.size > 0) {
-    console.error(`Orphaned notes: ${[...orphan].join(', ')}`)
+  ])
+  const orphanIds = ids.difference(linkedIds)
+  if (orphanIds.size > 0) {
+    console.error(`${orphanIds.size} orphaned notes: ${[...orphanIds].join(', ')}`)
   }
 }
 
