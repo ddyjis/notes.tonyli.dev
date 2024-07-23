@@ -198,9 +198,9 @@ const validate = (data: Metadata) => {
     ...data.wikilinks.map(({from}) => from),
     ...data.wikilinks.map(({to}) => to),
   ])
-  const orphanIds = ids.difference(linkedIds)
-  if (orphanIds.size > 0) {
-    console.error(`${orphanIds.size} orphaned notes: ${[...orphanIds].join(', ')}`)
+  const orphanIds = Array.from(ids).filter((id) => !linkedIds.has(id))
+  if (orphanIds.length > 0) {
+    console.error(`${orphanIds.length} orphaned notes: ${[...orphanIds].join(', ')}`)
   }
 }
 
