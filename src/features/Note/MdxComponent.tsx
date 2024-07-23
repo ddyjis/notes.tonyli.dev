@@ -45,7 +45,9 @@ const COMPONENTS = {
   thead: TableHeader,
   tbody: TableBody,
   tr: TableRow,
-  th: TableHead,
+  th: ({className, ...props}) => (
+    <TableHead {...props} className={cn(className, 'whitespace-nowrap')} />
+  ),
   td: TableCell,
   hashtag: ({value}) => (
     <NextLink href={`/_/tags/${value}`} className='font-semibold text-primary'>
