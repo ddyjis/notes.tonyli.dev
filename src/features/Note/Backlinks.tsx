@@ -6,6 +6,8 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
+import {ArrowLeft} from 'lucide-react'
+import Link from 'next/link'
 import {MdxComponent} from './MdxComponent'
 
 namespace Backlinks {
@@ -39,7 +41,14 @@ const Backlink = async ({id}: Backlinks.Props) => {
 
   return (
     <AccordionItem className='rounded-lg border border-primary/20 px-2' value={id}>
-      <AccordionTrigger className='text-xl'>{frontmatter.title}</AccordionTrigger>
+      <AccordionTrigger className='text-xl'>
+        <div className='flex items-center gap-2 pl-2'>
+          <Link href={`/${id}`} className='text-black/50 hover:text-black'>
+            <ArrowLeft size={16} />
+          </Link>
+          <div>{frontmatter.title}</div>
+        </div>
+      </AccordionTrigger>
       <AccordionContent className='max-h-60 overflow-y-auto'>
         <MdxComponent code={code} />
       </AccordionContent>
