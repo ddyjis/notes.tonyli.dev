@@ -10,6 +10,7 @@ import {readFile, writeFile} from 'node:fs/promises'
 import {basename} from 'node:path'
 import {bundleMDX} from 'mdx-bundler'
 import type {BundleMDXOptions} from 'mdx-bundler/dist/types'
+import rehypeHighlight from 'rehype-highlight'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
@@ -108,7 +109,7 @@ const getMdxOptions: (_: string[]) => Parameters<typeof bundleMDX>[0]['mdxOption
       getWikiLinkPlugin(noteIds.map((id) => id.replace('index', ''))),
       remarkHashtags,
     ]
-    options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeKatex]
+    options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeKatex, rehypeHighlight]
     return options
   }
 

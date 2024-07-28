@@ -54,6 +54,9 @@ const COMPONENTS = {
       #{value}
     </NextLink>
   ),
+  pre: ({className, ...props}) => (
+    <pre {...props} className={cn(className, 'overflow-auto border')} />
+  ),
 } satisfies MDXContentProps['components']
 
 namespace MdxComponent {

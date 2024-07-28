@@ -20,6 +20,10 @@ const Layout = async ({children}: {children: React.ReactNode}) => {
           href='https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css'
           rel='stylesheet'
         />
+        <link
+          href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github.min.css'
+          rel='stylesheet'
+        />
       </head>
       <body className={cn('h-screen bg-white font-mono antialiased', font.variable)}>
         <Navbar />
