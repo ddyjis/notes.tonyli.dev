@@ -44,10 +44,11 @@ const preprocessMdx = async () => {
   const directory = `${process.cwd()}/content`
   if (!existsSync(directory)) throw new Error('Content directory not found')
   const filenames = readdirSync(directory).filter((filename) => filename.endsWith('.md'))
+  const ids = new Set(filenames.map((filename) => basename(filename, '.md')))
   const entries: [string, NoteMetadata][] = []
   const hashtagToIds: Record<string, Set<string>> = {}
   const idToWikilinks: Record<string, Set<string>> = {}
-  const mdxOptions = getMdxOptions(filenames.map((filename) => basename(filename, '.md')))
+  const mdxOptions = getMdxOptions([...ids])
   for (const filename of filenames) {
     const id = basename(filename, '.md')
     const rawContent = await readFile(`${directory}/${filename}`, 'utf8')
@@ -72,6 +73,7 @@ const preprocessMdx = async () => {
     })
     visit(ast, 'wikiLink', (node) => {
       const wikilink = node.data.permalink
+      if (!ids.has(wikilink)) throw new Error(`${id} has a wikilink pointing to a non-existing note`)
       if (!idToWikilinks[id]) {
         idToWikilinks[id] = new Set()
       }
