@@ -19,7 +19,8 @@ export const Note = async ({id}: Note.Props) => {
     <div>
       <HistoryHandler id={id} />
       <Frontmatter
-        title={frontmatter.title?.toString() ?? id}
+        id={id}
+        title={frontmatter.title?.toString()}
         createDate={frontmatter.date}
         updateDate={frontmatter['date modified']}
       />
