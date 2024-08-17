@@ -6,5 +6,6 @@
   "tabSize": 2,
   "alwaysUpdateLinks": true,
   "newLinkFormat": "absolute",
-  "propertiesInDocument": "source"
+  "propertiesInDocument": "source",
+  "vimMode": true
 }
