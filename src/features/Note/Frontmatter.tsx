@@ -13,7 +13,7 @@ namespace Frontmatter {
 export const Frontmatter = ({id, title, createDate, updateDate}: Frontmatter.Props) => {
   return (
     <div className='flex flex-col items-center gap-2'>
-      <Link href={`/${id}/${slugify(title ?? '', {lower: true})}`}>
+      <Link href={`/${id}/${slugify(title ?? '', {lower: true})}`} replace>
         <h1 className='font-bold text-2xl'>{title ?? id}</h1>
       </Link>
       <div className='flex w-full justify-between'>
