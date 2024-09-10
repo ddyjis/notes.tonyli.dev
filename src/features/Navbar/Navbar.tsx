@@ -1,4 +1,3 @@
-import {Tags} from 'lucide-react'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 
@@ -12,8 +11,8 @@ export const Navbar = () => (
         <NextImage src={logo} alt='Index' height='40' />
       </NextLink>
       <Search />
-      <NextLink href='/_/tags'>
-        <Tags size={28} className='text-primary' />
+      <NextLink href='/_/tags' className='text-sm'>
+        Tags
       </NextLink>
     </div>
   </nav>

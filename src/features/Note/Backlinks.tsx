@@ -40,8 +40,8 @@ const Backlink = async ({id}: Backlinks.Props) => {
   if (!code || !frontmatter) return null
 
   return (
-    <AccordionItem className='rounded-lg border border-primary/20 px-2' value={id}>
-      <AccordionTrigger className='text-xl'>
+    <AccordionItem className='border px-2' value={id}>
+      <AccordionTrigger className='hover:no-underline'>
         <div className='flex items-center gap-2 pl-2'>
           <Link href={`/${id}`} className='text-black/50 hover:text-black'>
             <ArrowLeft size={16} />
@@ -49,7 +49,7 @@ const Backlink = async ({id}: Backlinks.Props) => {
           <div>{frontmatter.title}</div>
         </div>
       </AccordionTrigger>
-      <AccordionContent className='max-h-60 overflow-y-auto'>
+      <AccordionContent className='max-h-60 overflow-y-auto px-2'>
         <MdxComponent code={code} />
       </AccordionContent>
     </AccordionItem>

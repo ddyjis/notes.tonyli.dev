@@ -33,10 +33,10 @@ const COMPONENTS = {
     />
   ),
   ul: ({className, ...props}) => (
-    <ul {...props} className={cn(className, 'mt-2 mb-2 list-disc pl-5 text-base')} />
+    <ul {...props} className={cn(className, 'mt-2 mb-2 list-disc pl-8 text-base')} />
   ),
   ol: ({className, ...props}) => (
-    <ol {...props} className={cn(className, 'mt-2 mb-2 list-decimal pl-5 text-base')} />
+    <ol {...props} className={cn(className, 'mt-2 mb-2 list-decimal pl-8 text-base')} />
   ),
   li: ({className, ...props}) => (
     <li {...props} className={cn(className, 'text-base leading-[1.6rem]')} />
@@ -56,6 +56,9 @@ const COMPONENTS = {
   ),
   pre: ({className, ...props}) => (
     <pre {...props} className={cn(className, 'overflow-auto border')} />
+  ),
+  code: ({className, ...props}) => (
+    <code {...props} className={cn(className, 'bg-primary/10 px-1 py-0.5')} />
   ),
 } satisfies MDXContentProps['components']
 
