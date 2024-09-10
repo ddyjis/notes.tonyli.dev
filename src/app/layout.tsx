@@ -1,6 +1,6 @@
 import '@/app/global.css'
 import type {Metadata} from 'next'
-import {Fira_Code} from 'next/font/google'
+import localFont from 'next/font/local'
 
 import {Navbar} from '@/features/Navbar'
 import {cn} from '@/lib/utils'
@@ -28,9 +28,36 @@ const Layout = async ({children}: {children: React.ReactNode}) => {
       <body className={cn('h-screen bg-white font-mono antialiased', font.variable)}>
         <Navbar />
         <div className='container max-w-xl flex-1 overflow-auto py-4'>{children}</div>
+        <footer className='text-center text-sm text-gray-500 py-4'>
+          Font provided by <a href="https://ia.net/writer" className="underline" target="_blank" rel="noopener noreferrer">iA Writer</a>
+        </footer>
       </body>
     </html>
   )
 }
 export default Layout
-const font = Fira_Code({subsets: ['latin'], variable: '--font'})
+const font = localFont({
+  src: [
+    {
+      path: './fonts/iAWriterMonoS-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/iAWriterMonoS-Bold.woff2',
+      weight: '700',
+      style: 'bold',
+    },
+    {
+      path: './fonts/iAWriterMonoS-BoldItalic.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: './fonts/iAWriterMonoS-Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+  ],
+  variable: '--font'
+})
