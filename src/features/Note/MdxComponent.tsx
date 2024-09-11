@@ -12,10 +12,10 @@ const COMPONENTS = {
     <h1 {...props} className={cn(className, 'mt-7 mb-2 font-bold text-xl')} />
   ),
   h2: ({className, ...props}) => (
-    <h2 {...props} className={cn(className, 'mt-6 mb-2 font-bold underline [h1+&]:mt-2')} />
+    <h2 {...props} className={cn(className, 'mt-6 mb-2 font-bold uppercase [h1+&]:mt-2')} />
   ),
   h3: ({className, ...props}) => (
-    <h3 {...props} className={cn(className, 'mt-5 mb-2 font-bold [h2+&]:mt-2')} />
+    <h3 {...props} className={cn(className, 'mt-5 mb-2 font-bold italic [h2+&]:mt-2')} />
   ),
   p: ({className, ...props}) => (
     <p {...props} className={cn(className, 'mt-4 mb-2 text-base leading-[1.6rem] [h1+&]:mt-2 [h2+&]:mt-2 [h3+&]:mt-2')} />
