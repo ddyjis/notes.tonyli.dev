@@ -79,7 +79,7 @@ export const MdxComponent = ({code}: MdxComponent.Props) => {
 
   // Wrap the MDX content in a div to so that the first h1 is hidden
   return (
-    <div className='first:*:hidden'>
+    <div className='overflow-x-auto first:*:hidden'>
       <Component components={COMPONENTS} />
     </div>
   )

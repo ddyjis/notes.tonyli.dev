@@ -27,7 +27,7 @@ const Layout = async ({children}: {children: React.ReactNode}) => {
       </head>
       <body className={cn('h-screen bg-white font-mono antialiased', font.variable)}>
         <Navbar />
-        <div className='container max-w-xl flex-1 overflow-auto py-4'>{children}</div>
+        <div className='container max-w-xl flex-1 overflow-y-auto py-4'>{children}</div>
         <footer className='py-4 text-center text-gray-500 text-sm'>
           Font provided by{' '}
           <a
