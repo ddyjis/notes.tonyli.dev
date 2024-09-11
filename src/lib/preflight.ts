@@ -73,7 +73,8 @@ const preprocessMdx = async () => {
     })
     visit(ast, 'wikiLink', (node) => {
       const wikilink = node.data.permalink
-      if (!ids.has(wikilink)) throw new Error(`${id} has a wikilink pointing to a non-existing note`)
+      if (!ids.has(wikilink))
+        throw new Error(`${id} has a wikilink pointing to a non-existing note`)
       if (!idToWikilinks[id]) {
         idToWikilinks[id] = new Set()
       }
@@ -84,7 +85,9 @@ const preprocessMdx = async () => {
     entries.push([id, {id, frontmatter, code, document}])
   }
   const notes = Object.fromEntries(entries)
-  updateAlgoliaIndex(notes)
+  if (process.env.NODE_ENV === 'production') {
+    updateAlgoliaIndex(notes)
+  }
   const output: Metadata = {
     notes,
     hashtags: Object.fromEntries(
