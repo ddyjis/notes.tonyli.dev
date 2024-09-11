@@ -28,8 +28,16 @@ const Layout = async ({children}: {children: React.ReactNode}) => {
       <body className={cn('h-screen bg-white font-mono antialiased', font.variable)}>
         <Navbar />
         <div className='container max-w-xl flex-1 overflow-auto py-4'>{children}</div>
-        <footer className='text-center text-sm text-gray-500 py-4'>
-          Font provided by <a href="https://ia.net/writer" className="underline" target="_blank" rel="noopener noreferrer">iA Writer</a>
+        <footer className='py-4 text-center text-gray-500 text-sm'>
+          Font provided by{' '}
+          <a
+            href='https://ia.net/writer'
+            className='underline'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            iA Writer
+          </a>
         </footer>
       </body>
     </html>
@@ -59,5 +67,5 @@ const font = localFont({
       style: 'italic',
     },
   ],
-  variable: '--font'
+  variable: '--font',
 })

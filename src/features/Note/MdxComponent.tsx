@@ -18,7 +18,13 @@ const COMPONENTS = {
     <h3 {...props} className={cn(className, 'mt-5 mb-2 font-bold italic [h2+&]:mt-2')} />
   ),
   p: ({className, ...props}) => (
-    <p {...props} className={cn(className, 'mt-4 mb-2 text-base leading-[1.6rem] [h1+&]:mt-2 [h2+&]:mt-2 [h3+&]:mt-2')} />
+    <p
+      {...props}
+      className={cn(
+        className,
+        'mt-4 mb-2 text-base leading-[1.6rem] [h1+&]:mt-2 [h2+&]:mt-2 [h3+&]:mt-2',
+      )}
+    />
   ),
   a: ({className, ...props}) => (
     <a {...props} className={cn(className, 'text-primary underline')} />

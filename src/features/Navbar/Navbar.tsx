@@ -5,7 +5,7 @@ import logo from '@/app/onepiece.png'
 import {Search} from '@/features/Search'
 
 export const Navbar = () => (
-  <nav className='sticky top-0 z-50 shadow bg-white py-2'>
+  <nav className='sticky top-0 z-50 bg-white py-2 shadow'>
     <div className='container flex max-w-xl items-center justify-between gap-4'>
       <NextLink href='/'>
         <NextImage src={logo} alt='Index' height='40' />
