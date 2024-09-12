@@ -128,8 +128,8 @@ const getWikiLinkPlugin = (noteIds: string[]) =>
       aliasDivider: '|',
       hrefTemplate: (link: string) => `/${link}`,
       permalinks: noteIds,
-      wikiLinkClassName: 'text-primary font-semibold underline',
-      newClassName: 'text-primary/50 font-semibold',
+      wikiLinkClassName: 'text-primary underline',
+      newClassName: 'text-primary/50',
     },
   ] satisfies Plugin
 
