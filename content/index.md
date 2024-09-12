@@ -26,6 +26,7 @@ This is my digital notebook. To know more about this, see [[20240619183529|The M
 - [[20240626101310|Learning]]
 - [[20240912094411|Life Tips]]
 - [[20240728151503|macOS]]
+- [[20240912132849|Mathematics]]
 - [[20240728154343|Parenting]]
 - [[20240817003425|Philosophy]]
 - [[20240722223242|React]]
