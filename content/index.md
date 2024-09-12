@@ -2,13 +2,13 @@
 aliases:
   - Index
 date: 2024-06-19
-date modified: 2024-08-17
+date modified: 2024-09-12
 title: Index
 ---
 
 # Index
 
-This is my digital notebook. To know more about this, see [[20240619183529|The Metanotes]]
+This is my digital notebook. To know more about this, see [[20240619183529|The Meta-notes]]
 
 ## Topics
 
@@ -24,6 +24,7 @@ This is my digital notebook. To know more about this, see [[20240619183529|The M
 - [[20240728153003|HomeLab]]
 - [[20240620151814|Investment]]
 - [[20240626101310|Learning]]
+- [[20240912094411|Life Tips]]
 - [[20240728151503|macOS]]
 - [[20240728154343|Parenting]]
 - [[20240817003425|Philosophy]]
