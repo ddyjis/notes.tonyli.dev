@@ -1,7 +1,7 @@
 {
-  "cssTheme": "Tokyo Night",
+  "cssTheme": "Minimal",
   "theme": "obsidian",
-  "interfaceFontFamily": "iMWritingQuat Nerd Font",
-  "textFontFamily": "iMWritingMono Nerd Font Mono",
-  "monospaceFontFamily": "iMWritingMono Nerd Font Mono"
+  "interfaceFontFamily": "iA Writer Quattro S",
+  "textFontFamily": "iA Writer Mono S",
+  "monospaceFontFamily": "iA Writer Mono S"
 }
