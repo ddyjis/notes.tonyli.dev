@@ -27,7 +27,12 @@ const COMPONENTS = {
     />
   ),
   a: ({className, ...props}) => (
-    <a {...props} className={cn(className, 'text-primary underline')} />
+    <a
+      target={props.href.startsWith('/') ? undefined : '_blank'}
+      rel={props.href.startsWith('/') ? undefined : 'noopener noreferrer'}
+      {...props}
+      className={cn(className, 'text-primary underline')}
+    />
   ),
   blockquote: ({className, ...props}) => (
     <blockquote
