@@ -23,7 +23,7 @@
     "lunr": "^2.3.9",
     "mdast": "^3.0.0",
     "mdx-bundler": "^10.0.2",
-    "next": "^14.2.5",
+    "next": "^14.2.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-instantsearch": "^7.12.2",
