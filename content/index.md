@@ -2,7 +2,7 @@
 aliases:
   - Index
 date: 2024-06-19
-date modified: 2024-09-12
+date modified: 2024-10-02
 title: Index
 ---
 
@@ -29,6 +29,7 @@ This is my digital notebook. To know more about this, see [[20240619183529|The M
 - [[20240912132849|Mathematics]]
 - [[20240728154343|Parenting]]
 - [[20240817003425|Philosophy]]
+- [[20241002111908|Psychology]]
 - [[20240722223242|React]]
 - [[20240723101806|Software Development]]
 
