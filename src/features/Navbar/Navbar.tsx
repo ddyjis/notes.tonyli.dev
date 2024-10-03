@@ -2,7 +2,6 @@ import NextImage from 'next/image'
 import NextLink from 'next/link'
 
 import logo from '@/app/onepiece.png'
-import {Search} from '@/features/Search'
 
 export const Navbar = () => (
   <nav className='sticky top-0 z-50 bg-white py-2 shadow'>
@@ -10,7 +9,6 @@ export const Navbar = () => (
       <NextLink href='/'>
         <NextImage src={logo} alt='Index' height='40' />
       </NextLink>
-      <Search />
       <NextLink href='/_/tags' className='text-sm'>
         Tags
       </NextLink>
