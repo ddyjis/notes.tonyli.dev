@@ -21,7 +21,7 @@ import {
 import {DialogTitle} from '@/components/ui/dialog'
 import {useHistory} from '@/features/History'
 
-import {useHotkey} from './hooks'
+import {useHotkey, useDebounce} from './hooks'
 
 export const Search = () => {
   const [open, setOpen] = useState(false)
@@ -68,10 +68,10 @@ const SearchDialog = (props: DialogProps) => {
 const SearchInput = () => {
   const {refine} = useSearchBox()
   const [search, setSearch] = useState('')
+  const debouncedSearch = useDebounce(search, 500)
   useEffect(() => {
-    const debouncedRefine = setTimeout(() => refine(search), 500)
-    return () => clearTimeout(debouncedRefine)
-  }, [search, refine])
+    refine(debouncedSearch)
+  }, [debouncedSearch, refine])
 
   return <CommandInput value={search} onValueChange={setSearch} />
 }

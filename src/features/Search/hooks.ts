@@ -2,34 +2,13 @@
 
 import {useEffect, useState} from 'react'
 
-import type {SearchResult} from '@/app/api/search/route'
-
-export const useSearch = () => {
-  const [search, setSearch] = useState('')
-  const [debouncedSearch, setDebouncedSearch] = useState('')
-  const [results, setResults] = useState<SearchResult[] | undefined>(undefined)
-  // debounce search
+export const useDebounce = (value: string, delay: number) => {
+  const [debouncedValue, setDebouncedValue] = useState(value)
   useEffect(() => {
-    const debouncedSearch = setTimeout(() => {
-      setDebouncedSearch(search)
-    }, 500)
-    return () => clearTimeout(debouncedSearch)
-  }, [search])
-  // fetch results
-  useEffect(() => {
-    const searchFn = async () => {
-      const response = await fetch(`/api/search?q=${debouncedSearch}`)
-      const results = (await response.json()) as SearchResult[]
-      setResults(results)
-    }
-    if (debouncedSearch) {
-      searchFn()
-    } else {
-      setResults(undefined)
-    }
-  }, [debouncedSearch])
-
-  return {search, setSearch, results}
+    const timeout = setTimeout(() => setDebouncedValue(value), delay)
+    return () => clearTimeout(timeout)
+  }, [value, delay])
+  return debouncedValue
 }
 
 export const useHotkey = (onTrigger: (_: boolean | ((_: boolean) => boolean)) => void) => {
