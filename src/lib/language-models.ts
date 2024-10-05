@@ -17,8 +17,8 @@ export const generateSummary = async (text: string): Promise<string> => {
     model: 'google-t5/t5-base',
     inputs: text,
     parameters: {
-      max_length: 250
-    }
+      max_length: 250,
+    },
   })
   return result.summary_text
 }

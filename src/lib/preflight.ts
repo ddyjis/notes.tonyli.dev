@@ -188,7 +188,7 @@ const remarkHashtags: Plugin = () => {
 /**
  * Remove markdown syntax
  */
-const cleanMarkdown = async(content: string) => {
+const cleanMarkdown = async (content: string) => {
   const processor = unified()
     .use(remarkParse)
     .use(remarkStringify)
