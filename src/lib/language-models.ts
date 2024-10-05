@@ -14,7 +14,7 @@ export const generateEmbeddings = async (texts: string[]): Promise<number[][]> =
 
 export const generateSummary = async (text: string): Promise<string> => {
   const result = await inference.summarization({
-    model: 'Falconsai/text_summarization',
+    model: 'google-t5/t5-base',
     inputs: text,
     parameters: {
       max_length: 250
