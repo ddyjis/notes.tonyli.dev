@@ -19,7 +19,7 @@ import remarkWikiLink from 'remark-wiki-link'
 import {unified} from 'unified'
 import {SKIP, visit} from 'unist-util-visit'
 
-import {updateAlgoliaIndex} from '@/lib/algolia'
+import {generateEmbeddings} from '@/lib/language-models'
 
 const HASHTAG_REGEX = /(?<![\w/])#(\w+)(?![\w/#])/g
 
@@ -34,6 +34,7 @@ type NoteMetadata = {
   frontmatter: Frontmatter
   code: string
   document: string
+  embedding: number[]
 }
 export type Metadata = {
   notes: Partial<Record<string, NoteMetadata>>
@@ -82,12 +83,10 @@ const preprocessMdx = async () => {
     })
 
     const document = cleanMarkdown(rawContent)
-    entries.push([id, {id, frontmatter, code, document}])
+    entries.push([id, {id, frontmatter, code, document, embedding: []}])
   }
+  await computeNoteEmbeddings(entries)
   const notes = Object.fromEntries(entries)
-  if (process.env.NODE_ENV === 'production') {
-    updateAlgoliaIndex(notes)
-  }
   const output: Metadata = {
     notes,
     hashtags: Object.fromEntries(
@@ -207,6 +206,13 @@ const validate = (data: Metadata) => {
   const orphanIds = Array.from(ids).filter((id) => !linkedIds.has(id))
   if (orphanIds.length > 0) {
     console.error(`${orphanIds.length} orphaned notes: ${[...orphanIds].join(', ')}`)
+  }
+}
+
+const computeNoteEmbeddings = async (entries: [string, NoteMetadata][]) => {
+  const embeddings = await generateEmbeddings(entries.map(([_, value]) => value.document))
+  for (const [i, [_, value]] of entries.entries()) {
+    value.embedding = embeddings[i]
   }
 }
 

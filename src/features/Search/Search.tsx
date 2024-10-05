@@ -2,11 +2,8 @@
 
 import type {DialogProps} from '@radix-ui/react-dialog'
 import {VisuallyHidden} from '@radix-ui/react-visually-hidden'
-import algoliasearch from 'algoliasearch/lite'
 import {useRouter} from 'next/navigation'
-import {type ComponentProps, useEffect, useState} from 'react'
-import {Highlight, useHits, useInstantSearch, useSearchBox} from 'react-instantsearch'
-import {InstantSearchNext} from 'react-instantsearch-nextjs'
+import {type ComponentProps, useEffect, useRef, useState} from 'react'
 
 import {metadata} from '@/app/metadata'
 import {Button} from '@/components/ui/button'
@@ -20,8 +17,9 @@ import {
 } from '@/components/ui/command'
 import {DialogTitle} from '@/components/ui/dialog'
 import {useHistory} from '@/features/History'
+import {MdxComponent} from '@/features/Note'
 
-import {useHotkey, useDebounce} from './hooks'
+import {useHotkey, useSearch} from './hooks'
 
 export const Search = () => {
   const [open, setOpen] = useState(false)
@@ -50,54 +48,58 @@ const SearchDialog = (props: DialogProps) => {
     props.onOpenChange(false)
     router.push(`/${id}`)
   }
+  const [query, setQuery] = useState('')
+  const previousQueryRef = useRef('')
+  const [shouldTriggerSearch, setShouldTriggerSearch] = useState(false)
+
+  useEffect(() => {
+    if (query !== previousQueryRef.current) {
+      setShouldTriggerSearch(false)
+    }
+  }, [query, previousQueryRef])
+
   return (
     <CommandDialog {...props} shouldFilter={false}>
       <VisuallyHidden>
         <DialogTitle>Algolia Search</DialogTitle>
       </VisuallyHidden>
-      <InstantSearchNext indexName='notes' searchClient={client}>
-        <SearchInput />
-        <CommandList className='max-h-[600px]'>
-          <SearchResults onItemSelect={handleSelect} />
-        </CommandList>
-      </InstantSearchNext>
+      <CommandInput
+        value={query}
+        onValueChange={(value) => {
+          setQuery(value)
+          setShouldTriggerSearch(false)
+        }}
+        onSearchClick={() => {
+          setShouldTriggerSearch(true)
+          previousQueryRef.current = query
+        }}
+      />
+      <CommandList className='max-h-[600px]'>
+        <SearchResults query={shouldTriggerSearch ? query : previousQueryRef.current} onItemSelect={handleSelect} />
+      </CommandList>
     </CommandDialog>
   )
 }
 
-const SearchInput = () => {
-  const {refine} = useSearchBox()
-  const [search, setSearch] = useState('')
-  const debouncedSearch = useDebounce(search, 500)
-  useEffect(() => {
-    refine(debouncedSearch)
-  }, [debouncedSearch, refine])
-
-  return <CommandInput value={search} onValueChange={setSearch} />
-}
-
-type SearchResultsProps = {onItemSelect: (_: string) => void}
-const SearchResults = ({onItemSelect}: SearchResultsProps) => {
-  const {items} = useHits()
-  const {query} = useSearchBox()
-  const {status, results, error} = useInstantSearch()
-
+type SearchResultsProps = {query: string; onItemSelect: (_: string) => void}
+const SearchResults = ({query, onItemSelect}: SearchResultsProps) => {
+  const {data, status, error} = useSearch(query)
+  
   if (!query) return <HistoryGroup onItemSelect={onItemSelect} />
   if (status === 'loading') return <CommandEmpty>Loading...</CommandEmpty>
-  if (status === 'error') return <CommandEmpty>Error: {error.message}</CommandEmpty>
-  if (status === 'stalled') return <CommandEmpty>Searching...</CommandEmpty>
-  if (results?.nbHits === 0) return <CommandEmpty>No results found.</CommandEmpty>
+  if (status === 'error') return <CommandEmpty>Error: {error}</CommandEmpty>
+  if (data.length === 0) return <CommandEmpty>No results found.</CommandEmpty>
 
   return (
     <CommandGroup heading='Results'>
-      {items.map((item) => (
+      {data.map((item) => (
         <CommandItem
-          key={item.objectID}
-          onSelect={() => onItemSelect(item.objectID)}
+          key={item.id}
+          onSelect={() => onItemSelect(item.id)}
           className='flex flex-col gap-1'
         >
-          <h1 className='font-bold text-lg'>{item.title}</h1>
-          <Highlight attribute='document' hit={item} />
+          <h1 className='font-bold text-lg'>{item.frontmatter.title}</h1>
+          <MdxComponent code={item.code} />
         </CommandItem>
       ))}
     </CommandGroup>
@@ -123,8 +125,3 @@ const HistoryItem = ({id, ...props}: HistoryItemProps) => {
   if (!frontmatter) return null
   return <CommandItem {...props}>{frontmatter.title}</CommandItem>
 }
-
-const client = algoliasearch(
-  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
-)
