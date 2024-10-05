@@ -17,13 +17,17 @@ export const GET = async (request: Request) => {
 const search = cache(async (query: string) => {
   const embeddings = await generateEmbeddings([query])
   const embedding = embeddings[0]
-  const notesSortedBySimilarity = Object.values(metadata.notes).map((noteMetadata) => {
-    const similarity = dotProduct(embedding, noteMetadata.embedding)
-    return {similarity, ...noteMetadata}
-  }).sort((a, b) => b.similarity - a.similarity)
+  const notesSortedBySimilarity = Object.values(metadata.notes)
+    .map((noteMetadata) => {
+      const similarity = dotProduct(embedding, noteMetadata.embedding)
+      return {similarity, ...noteMetadata}
+    })
+    .sort((a, b) => b.similarity - a.similarity)
   const similarities = notesSortedBySimilarity.map((note) => note.similarity)
   const threshold = getThreshold(similarities)
-  return notesSortedBySimilarity.filter((note) => note.similarity >= threshold).map(({embedding, ...rest}) => rest)
+  return notesSortedBySimilarity
+    .filter((note) => note.similarity >= threshold)
+    .map(({embedding, ...rest}) => rest)
 })
 
 const getThreshold = (similarities: number[]) => {

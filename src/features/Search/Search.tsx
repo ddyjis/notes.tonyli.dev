@@ -56,7 +56,7 @@ const SearchDialog = (props: DialogProps) => {
     if (query !== previousQueryRef.current) {
       setShouldTriggerSearch(false)
     }
-  }, [query, previousQueryRef])
+  }, [query])
 
   return (
     <CommandDialog {...props} shouldFilter={false}>
@@ -75,7 +75,10 @@ const SearchDialog = (props: DialogProps) => {
         }}
       />
       <CommandList className='max-h-[600px]'>
-        <SearchResults query={shouldTriggerSearch ? query : previousQueryRef.current} onItemSelect={handleSelect} />
+        <SearchResults
+          query={shouldTriggerSearch ? query : previousQueryRef.current}
+          onItemSelect={handleSelect}
+        />
       </CommandList>
     </CommandDialog>
   )
@@ -84,7 +87,7 @@ const SearchDialog = (props: DialogProps) => {
 type SearchResultsProps = {query: string; onItemSelect: (_: string) => void}
 const SearchResults = ({query, onItemSelect}: SearchResultsProps) => {
   const {data, status, error} = useSearch(query)
-  
+
   if (!query) return <HistoryGroup onItemSelect={onItemSelect} />
   if (status === 'loading') return <CommandEmpty>Loading...</CommandEmpty>
   if (status === 'error') return <CommandEmpty>Error: {error}</CommandEmpty>
