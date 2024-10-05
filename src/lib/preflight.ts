@@ -15,7 +15,9 @@ import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
 import remarkWikiLink from 'remark-wiki-link'
+import stripMarkdown from 'strip-markdown'
 import {unified} from 'unified'
 import {SKIP, visit} from 'unist-util-visit'
 
@@ -53,7 +55,7 @@ const preprocessMdx = async () => {
   for (const filename of filenames) {
     const id = basename(filename, '.md')
     const rawContent = await readFile(`${directory}/${filename}`, 'utf8')
-    const {code, frontmatter} = await bundleMDX({
+    const {code, frontmatter, matter} = await bundleMDX({
       source: rawContent,
       mdxOptions,
       esbuildOptions(options) {
@@ -82,7 +84,7 @@ const preprocessMdx = async () => {
       idToWikilinks[id].add(wikilink)
     })
 
-    const document = cleanMarkdown(rawContent)
+    const document = await cleanMarkdown(matter.content)
     entries.push([id, {id, frontmatter, code, document, embedding: []}])
   }
   await computeNoteEmbeddings(entries)
@@ -181,15 +183,15 @@ const remarkHashtags: Plugin = () => {
 }
 
 /**
- * Remove frontmatter and wikilinks
+ * Remove markdown syntax
  */
-const cleanMarkdown = (content: string) => {
-  let cleanedContent = content
-  cleanedContent = cleanedContent.startsWith('---')
-    ? cleanedContent.split('---').slice(2).join('---')
-    : cleanedContent
-  cleanedContent = cleanedContent.replaceAll('[[', '').replaceAll(']]', '')
-  return cleanedContent
+const cleanMarkdown = async(content: string) => {
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkStringify)
+    .use(stripMarkdown, {remove: ['table', 'math', 'inlineMath']})
+  const plainText = await processor.process(content)
+  return plainText.toString()
 }
 
 const parser = unified()
