@@ -12,4 +12,13 @@ export const generateEmbeddings = async (texts: string[]): Promise<number[][]> =
   return (result as number[][]).map(normalizeVector)
 }
 
-// TODO: Add a function to get summary
+export const generateSummary = async (text: string): Promise<string> => {
+  const result = await inference.summarization({
+    model: 'Falconsai/text_summarization',
+    inputs: text,
+    parameters: {
+      max_length: 250
+    }
+  })
+  return result.summary_text
+}

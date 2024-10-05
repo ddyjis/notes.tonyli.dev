@@ -21,7 +21,7 @@ import stripMarkdown from 'strip-markdown'
 import {unified} from 'unified'
 import {SKIP, visit} from 'unist-util-visit'
 
-import {generateEmbeddings} from '@/lib/language-models'
+import {generateEmbeddings, generateSummary} from '@/lib/language-models'
 
 const HASHTAG_REGEX = /(?<![\w/])#(\w+)(?![\w/#])/g
 
@@ -35,7 +35,8 @@ type NoteMetadata = {
   id: string
   frontmatter: Frontmatter
   code: string
-  document: string
+  plainText: string
+  summary: string
   embedding: number[]
 }
 export type Metadata = {
@@ -52,7 +53,8 @@ const preprocessMdx = async () => {
   const hashtagToIds: Record<string, Set<string>> = {}
   const idToWikilinks: Record<string, Set<string>> = {}
   const mdxOptions = getMdxOptions([...ids])
-  for (const filename of filenames) {
+  for (const [index, filename] of filenames.entries()) {
+    console.log(`Processing ${index + 1}/${filenames.length} ${filename}`)
     const id = basename(filename, '.md')
     const rawContent = await readFile(`${directory}/${filename}`, 'utf8')
     const {code, frontmatter, matter} = await bundleMDX({
@@ -84,8 +86,9 @@ const preprocessMdx = async () => {
       idToWikilinks[id].add(wikilink)
     })
 
-    const document = await cleanMarkdown(matter.content)
-    entries.push([id, {id, frontmatter, code, document, embedding: []}])
+    const plainText = await cleanMarkdown(matter.content)
+    const summary = await generateSummary(plainText)
+    entries.push([id, {id, frontmatter, code, plainText, summary, embedding: []}])
   }
   await computeNoteEmbeddings(entries)
   const notes = Object.fromEntries(entries)
@@ -212,7 +215,7 @@ const validate = (data: Metadata) => {
 }
 
 const computeNoteEmbeddings = async (entries: [string, NoteMetadata][]) => {
-  const embeddings = await generateEmbeddings(entries.map(([_, value]) => value.document))
+  const embeddings = await generateEmbeddings(entries.map(([_, value]) => value.plainText))
   for (const [i, [_, value]] of entries.entries()) {
     value.embedding = embeddings[i]
   }
