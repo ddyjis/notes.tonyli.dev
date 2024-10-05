@@ -17,7 +17,6 @@ import {
 } from '@/components/ui/command'
 import {DialogTitle} from '@/components/ui/dialog'
 import {useHistory} from '@/features/History'
-import {MdxComponent} from '@/features/Note'
 
 import {useHotkey, useSearch} from './hooks'
 
@@ -102,7 +101,7 @@ const SearchResults = ({query, onItemSelect}: SearchResultsProps) => {
           className='flex flex-col gap-1'
         >
           <h1 className='font-bold text-lg'>{item.frontmatter.title}</h1>
-          <MdxComponent code={item.code} />
+          <p>{item.summary}</p>
         </CommandItem>
       ))}
     </CommandGroup>
@@ -124,7 +123,14 @@ const HistoryGroup = ({onItemSelect}: HistoryGroupProps) => {
 
 type HistoryItemProps = ComponentProps<typeof CommandItem> & {id: string}
 const HistoryItem = ({id, ...props}: HistoryItemProps) => {
-  const {frontmatter} = metadata.notes[id] ?? {}
-  if (!frontmatter) return null
-  return <CommandItem {...props}>{frontmatter.title}</CommandItem>
+  const {frontmatter, summary} = metadata.notes[id] ?? {}
+  if (!frontmatter || !summary) return null
+  return (
+    <CommandItem {...props}>
+      <div className='flex flex-col gap-1'>
+        <h1 className='font-bold text-lg'>{frontmatter.title}</h1>
+        <p>{summary}</p>
+      </div>
+    </CommandItem>
+  )
 }
