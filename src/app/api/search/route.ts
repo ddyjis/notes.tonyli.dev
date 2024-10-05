@@ -27,7 +27,7 @@ const search = cache(async (query: string) => {
   const threshold = getThreshold(similarities)
   return notesSortedBySimilarity
     .filter((note) => note.similarity >= threshold)
-    .map(({embedding, ...rest}) => rest)
+    .map(({embedding, code, plainText, ...rest}) => rest)
 })
 
 const getThreshold = (similarities: number[]) => {
