@@ -15,11 +15,13 @@ import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
 import remarkWikiLink from 'remark-wiki-link'
+import stripMarkdown from 'strip-markdown'
 import {unified} from 'unified'
 import {SKIP, visit} from 'unist-util-visit'
 
-import {updateAlgoliaIndex} from '@/lib/algolia'
+import {generateEmbeddings, generateSummary} from '@/lib/language-models'
 
 const HASHTAG_REGEX = /(?<![\w/])#(\w+)(?![\w/#])/g
 
@@ -33,7 +35,9 @@ type NoteMetadata = {
   id: string
   frontmatter: Frontmatter
   code: string
-  document: string
+  plainText: string
+  summary: string
+  embedding: number[]
 }
 export type Metadata = {
   notes: Partial<Record<string, NoteMetadata>>
@@ -49,10 +53,11 @@ const preprocessMdx = async () => {
   const hashtagToIds: Record<string, Set<string>> = {}
   const idToWikilinks: Record<string, Set<string>> = {}
   const mdxOptions = getMdxOptions([...ids])
-  for (const filename of filenames) {
+  for (const [index, filename] of filenames.entries()) {
+    console.log(`Processing ${index + 1}/${filenames.length} ${filename}`)
     const id = basename(filename, '.md')
     const rawContent = await readFile(`${directory}/${filename}`, 'utf8')
-    const {code, frontmatter} = await bundleMDX({
+    const {code, frontmatter, matter} = await bundleMDX({
       source: rawContent,
       mdxOptions,
       esbuildOptions(options) {
@@ -81,13 +86,12 @@ const preprocessMdx = async () => {
       idToWikilinks[id].add(wikilink)
     })
 
-    const document = cleanMarkdown(rawContent)
-    entries.push([id, {id, frontmatter, code, document}])
+    const plainText = await cleanMarkdown(matter.content)
+    const summary = await generateSummary(plainText)
+    entries.push([id, {id, frontmatter, code, plainText, summary, embedding: []}])
   }
+  await computeNoteEmbeddings(entries)
   const notes = Object.fromEntries(entries)
-  if (process.env.NODE_ENV === 'production') {
-    updateAlgoliaIndex(notes)
-  }
   const output: Metadata = {
     notes,
     hashtags: Object.fromEntries(
@@ -182,15 +186,15 @@ const remarkHashtags: Plugin = () => {
 }
 
 /**
- * Remove frontmatter and wikilinks
+ * Remove markdown syntax
  */
-const cleanMarkdown = (content: string) => {
-  let cleanedContent = content
-  cleanedContent = cleanedContent.startsWith('---')
-    ? cleanedContent.split('---').slice(2).join('---')
-    : cleanedContent
-  cleanedContent = cleanedContent.replaceAll('[[', '').replaceAll(']]', '')
-  return cleanedContent
+const cleanMarkdown = async (content: string) => {
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkStringify)
+    .use(stripMarkdown, {remove: ['table', 'math', 'inlineMath']})
+  const plainText = await processor.process(content)
+  return plainText.toString()
 }
 
 const parser = unified()
@@ -207,6 +211,13 @@ const validate = (data: Metadata) => {
   const orphanIds = Array.from(ids).filter((id) => !linkedIds.has(id))
   if (orphanIds.length > 0) {
     console.error(`${orphanIds.length} orphaned notes: ${[...orphanIds].join(', ')}`)
+  }
+}
+
+const computeNoteEmbeddings = async (entries: [string, NoteMetadata][]) => {
+  const embeddings = await generateEmbeddings(entries.map(([_, value]) => value.plainText))
+  for (const [i, [_, value]] of entries.entries()) {
+    value.embedding = embeddings[i]
   }
 }
 

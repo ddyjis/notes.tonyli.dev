@@ -1,14 +1,22 @@
 'use client'
 
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
+import useSWR, {type Fetcher} from 'swr'
 
-export const useDebounce = (value: string, delay: number) => {
-  const [debouncedValue, setDebouncedValue] = useState(value)
-  useEffect(() => {
-    const timeout = setTimeout(() => setDebouncedValue(value), delay)
-    return () => clearTimeout(timeout)
-  }, [value, delay])
-  return debouncedValue
+import type {SearchResult} from './types'
+
+const fetcher: Fetcher<SearchResult[], string> = (url) => fetch(url).then((res) => res.json())
+
+export const useSearch = (debouncedSearch: string | undefined) => {
+  const {data, error, isLoading} = useSWR<SearchResult[]>(
+    debouncedSearch ? `/api/search?q=${encodeURIComponent(debouncedSearch)}` : null,
+    fetcher,
+  )
+  return {
+    data,
+    status: error ? 'error' : isLoading ? 'loading' : 'idle',
+    error,
+  }
 }
 
 export const useHotkey = (onTrigger: (_: boolean | ((_: boolean) => boolean)) => void) => {

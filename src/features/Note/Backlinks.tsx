@@ -8,7 +8,6 @@ import {
 
 import {ArrowLeft} from 'lucide-react'
 import Link from 'next/link'
-import {MdxComponent} from './MdxComponent'
 
 namespace Backlinks {
   export type Props = {id: string}
@@ -36,8 +35,8 @@ export const Backlinks = ({id}: Backlinks.Props) => {
 }
 
 const Backlink = async ({id}: Backlinks.Props) => {
-  const {code, frontmatter} = metadata.notes[id] ?? {}
-  if (!code || !frontmatter) return null
+  const {code, frontmatter, summary} = metadata.notes[id] ?? {}
+  if (!code || !frontmatter || !summary) return null
 
   return (
     <AccordionItem className='border px-2' value={id}>
@@ -49,9 +48,7 @@ const Backlink = async ({id}: Backlinks.Props) => {
           <div>{frontmatter.title}</div>
         </div>
       </AccordionTrigger>
-      <AccordionContent className='max-h-60 overflow-y-auto px-2'>
-        <MdxComponent code={code} />
-      </AccordionContent>
+      <AccordionContent className='max-h-60 overflow-y-auto px-2'>{summary}</AccordionContent>
     </AccordionItem>
   )
 }

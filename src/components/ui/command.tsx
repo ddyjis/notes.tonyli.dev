@@ -34,6 +34,8 @@ const CommandDialog = ({children, shouldFilter, ...props}: CommandDialogProps) =
         <Command
           className='[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5'
           shouldFilter={shouldFilter}
+          // This is a workaround to prevent the command menu from filtering the items.
+          filter={shouldFilter ? undefined : () => 1}
         >
           {children}
         </Command>
@@ -44,10 +46,11 @@ const CommandDialog = ({children, shouldFilter, ...props}: CommandDialogProps) =
 
 const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
->(({className, ...props}, ref) => (
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & {
+    onSearchClick?: () => void
+  }
+>(({className, onSearchClick, ...props}, ref) => (
   <div className='flex items-center border-b px-3' cmdk-input-wrapper=''>
-    <Search className='mr-2 h-4 w-4 shrink-0 opacity-50' />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
@@ -56,6 +59,7 @@ const CommandInput = React.forwardRef<
       )}
       {...props}
     />
+    <Search className='mr-6 h-4 w-4 shrink-0 opacity-50' onClick={onSearchClick} />
   </div>
 ))
 
