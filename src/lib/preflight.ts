@@ -87,7 +87,8 @@ const preprocessMdx = async () => {
     })
 
     const plainText = await cleanMarkdown(matter.content)
-    const summary = await generateSummary(plainText)
+    const summary =
+      process.env.NODE_ENV === 'production' ? await generateSummary(plainText) : plainText
     entries.push([id, {id, frontmatter, code, plainText, summary, embedding: []}])
   }
   await computeNoteEmbeddings(entries)
