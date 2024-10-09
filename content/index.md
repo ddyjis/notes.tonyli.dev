@@ -2,7 +2,7 @@
 aliases:
   - Index
 date: 2024-06-19
-date modified: 2024-10-02
+date modified: 2024-10-08
 title: Index
 ---
 
@@ -61,3 +61,11 @@ Each item should follow this pattern
 - [TL;DR Hall of Fame](https://pickle-cosmonaut-ad7.notion.site/TLDR-Hall-of-Fame-668b8f19afdf45be88e46e980655da36)
 	- Related topics: [[20240626101310|Learning]] [[20240723101806|Software Development]] [[20240722224149|Career]]
 	- Comment: top stories in the TL;DR newsletter
+- [Lecture 3: Data engineering](https://docs.google.com/document/d/1b9iuZiDEGVLHyMmnf6w2y1aN6yWQhAyqk3GHlpI9q6M/mobilebasic)
+	- Related topics: [[20240723101806|Software Development]] and possibly new topic "Data Engineering" or "Machine Learning"
+- [charlax/professional-programming: A collection of learning resources for curious software engineers](https://github.com/charlax/professional-programming)
+	- Related topics: [[20240723101806|Software Development]]
+	- Comment: This is an awesome list with lots of recommended readings and resources
+- [About | Divio Documentation](https://docs.divio.com/documentation-system/)
+	- Related topics: [[20240723101806|Software Development]]
+	- Comment: The site suggests there are 4 types of documentation - 
